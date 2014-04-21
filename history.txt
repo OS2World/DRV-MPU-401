@@ -1,0 +1,136 @@
+MPU401 - MPU-401 driver for OS/2
+
+2.1     Fixed a bug in the Event manager where it was using the wrong
+        linked list to store events
+
+        Updated the documentation to include info on more sound cards.
+        Documentation is now generated with PPWIZARD, so HTML and INF
+        versions are available.
+
+2.0
+        Moved the command-line parser to PARAM.CPP
+
+        The verbose output now reports the exact version number
+
+        Fixed install script problem when IRQ-less recording is specified.
+
+        Changed beta expiration period to from 60-90 to 30-60 days
+
+        If the current date is earlier than the build date, the driver
+        terminates with an expiration message.
+
+0.10
+        0.09 didn't actually contain the new VMPU401.SYS.  This one does.
+
+        Added information on installing MPU-401 support for Win-OS/2.
+
+        Added code to conditionally compile the beta expiration check
+
+0.09
+        Updated MPUTRACE.TXT
+
+        Fixed a trap in VMPU401.SYS when IRQ-less recording is specified.
+
+        pulTimer, the pointer to TIMER0's counter, is now always initialized,
+        not just when the user requests TIMER0 services.  If TIMER0.SYS
+        doesn't exist, then pulTimer points to a fake counter.
+
+        Added the command-line utilities RTMLIST.EXE and RTMHWNOD.EXE
+
+        Added a couple entries for specific sound cards in the online docs.
+        Also fixed that annoying indent on top of each page.
+
+0.08
+        Fixed a bug with the RM code when debugging options were disabled
+
+        Updated the documentation to talk about NOCHECKIO and NOCHECKIRQ
+        side-effects. Also fixed some discrepancies between the documentation
+        and the installation.
+
+0.07
+        Created a unified INSTALL.CMD that scans your system for any current
+        drivers and does a simple update if necessary, otherwise starts
+        MINSTALL. Removed IBM.CMD and CRYSTAL.CMD
+
+        Updated documentation to include all new features
+
+        Added MPU401.INF online documentation
+
+0.06
+        Fixed bug where RTMIDI would always receive a hardware failure
+        message whenever it tried to open the device
+
+        MPU401.SYS would cause a TRAP 3 when the IRQ specified by the
+        /I parameter didn't exist.
+
+        Removed MIDI.SYS from installation because it's already included
+        in Warp 4 Fixpack 7.  Updated README.TXT accordingly.
+
+        Added traces for VDD/PDD calls.
+
+        Added MPUTRACE.TXT to describe the operation of MPUTRACE.EXE
+
+        Fixed a typo in INSTALL.TXT
+
+        Added VMPU401.SYS and the /O:AUDIOVDD option to enable DOS
+        sharing. Only devices allocated exclusively with RM are
+        protected, and only if /O:AUDIOVDD is specified.
+
+
+0.05
+        Renamed MPU401.TXT to INSTALL.TXT and added README.TXT
+
+        STREAM and EVENT classes now use the heap.
+
+        Added support for virtual destructors.
+
+        Added event tracing support and MPUTRACE.EXE monitoring tool.
+
+        The driver correctly stops using timing services when playback
+        stops.  Thanks to Ron Schnatzmeyer for this one.
+
+        No more hanging notes when playback stops.  Also thanks to Ron.
+
+        Updated help file and installation scripts to include /Ix:0
+        option.
+
+        Added the updated MIDI.SYS from the DD Pack to the installation.
+        Installing the new MPU-401 driver will also update RTMIDI.
+
+        Added CRYSTAL.CMD and IBM.CMD for quick installs of the driver
+        over an existing driver.
+
+        Added version number and description field to .SYS file.  Every time
+        the driver is built, the build number is incremented.
+
+0.04
+        Fixed bug where driver failed to claim a resource that was
+        available.  Thanks to Ernst Fueloep for this one.
+
+        More minor heap manager improvements
+
+        Added expiration code for betas. Each driver now expires about
+        three months after it was built. Driver also reports whether it
+        was successfully installed.
+
+        Finally fixed the VDD<->PDD bug, so AUDIOVDD support has been
+        restored.  Note that although all I/O ports are supported,
+        only the first IRQ is supported.  This is a limitation of IBM's
+        AUDIOVDD.SYS.
+
+0.03
+        Removed installation of AUDIOVDD.
+
+        Fixed MIDI recording.
+
+        Added TIMER0-based (IRQ-less) recording.
+
+0.02
+        Added heap for better memory management.
+
+        Improved Resource Manager handling - resources are now assigned
+        to each device instead of the adapter.
+
+0.01
+        Initial release
+

@@ -1,0 +1,69 @@
+#if    ['<$DocType>' = 'HTML']
+#define HTML {$CODE}
+#define IPF
+#else
+#define HTML
+#define IPF {$CODE}
+#endif
+
+#if    ['<$DocType>' = 'HTML']
+#define COMMENT <!--{$?} -->
+#else
+#define COMMENT .*{$?}
+#endif
+
+#if    ['<$DocType>' = 'HTML']
+       #define Image        <IMG                                       \
+                            #evaluate+ TmpSize ^GetImageHeightWidth("{$Image}.gif")^ \
+                            <$TmpSize> SRC="{$Image}.gif">
+#else
+       #define Image        :artwork runin name='{$Image}.bmp'.
+#endif
+
+#if    ['<$DocType>' = 'HTML']
+
+       #DefineRexx REXX_$$STRING_TO_HTMLWIDTHS
+              do i = 1 to words(TheValue)
+                     HtmlWidth.i = word(TheValue, i) * ColumnScale
+              end
+              HtmlWidth.0 = i - 1
+              TheValue = ''
+       #DefineRexx
+
+       #define ExpandWidths {$WIDTHS $$STRING_TO_HTMLWIDTHS}
+
+       #define Table        <TABLE                                    -\
+                            #if ["{$BORDER=''}" <> ""]                -\
+                                   <?Space>BORDER=1                   -\
+                            #endif                                    -\
+                            #RexxVar ColumnScale = {$SCALE='10'}      -\
+                            >                                         -\
+                            <$ExpandWidths {$WIDTHS $$PASSAQ}>
+
+       #define eTable       </TABLE>
+
+       #define TR           <TR>                                      \
+                            #RexxVar ColumnCount = 1
+
+       #define eTR          </TR>
+
+       #define TC           <TD WIDTH="<??HtmlWidth.ColumnCount>">    -\
+                            #RexxVar ColumnCount + 1
+
+
+       #define eTC          </TD>
+#else
+       #define Table        :table cols='{$WIDTHS=''}          -\
+                            #if ["{$BORDER=''}" = ""]          -\
+                                   rules=none frame=none       -\
+                            #endif                             -\
+                            '.
+
+       #define eTable       :etable.
+       #define TR           :row.
+       #define eTR
+       #define TC           :c.
+       #define eTC
+#endif
+
+

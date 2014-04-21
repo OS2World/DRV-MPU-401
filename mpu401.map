@@ -1,0 +1,801 @@
+WATCOM Linker Version 11.0
+Copyright by Sybase, Inc., and its subsidiaries, 1985, 1997.
+Created on:       01/10/14 22:44:17
+Executable Image: mpu401.sys
+creating an OS/2 16-bit dynamic link library
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0001:0000            00002b68
+CGROUP                          0002:0000            00006f20
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+_HEADER                DATA           DGROUP         0001:0000       00000020
+_DATA                  DATA           DGROUP         0001:0020       0000014c
+CONST                  DATA           DGROUP         0001:016c       00000110
+CONST2                 DATA           DGROUP         0001:0280       00000140
+XIB                    DATA           DGROUP         0001:03c0       00000000
+XI                     DATA           DGROUP         0001:03c0       00000012
+XIE                    DATA           DGROUP         0001:03d2       00000000
+_BSS                   BSS            DGROUP         0001:03e0       00000100
+_HEAP                  ENDDS          DGROUP         0001:04e0       0000200c
+_ENDDS                 ENDDS          DGROUP         0001:24ec       00000004
+_INITDATA              ENDDS          DGROUP         0001:24f0       00000678
+_ENDINITDATA           ENDDS          DGROUP         0001:2b68       00000000
+_TEXT                  CODE           CGROUP         0002:0000       00003f6c
+_ENDCS                 CODE           CGROUP         0002:3f6c       00000000
+RMCODE                 CODE           CGROUP         0002:3f6c       0000025c
+_INITTEXT              CODE           CGROUP         0002:41c8       00002d58
+CONST                  CONST          DGROUP         0001:2b68       00000000
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: segments.obj(N:\base\src\dev\mme\mpu401b\segments.asm)
+0001:04e0      _uMemFree
+0001:04e2      _pmbFree
+0001:04e4      _mbFirstFree
+0001:24ec      _end_of_heap
+0001:24ec      _end_of_data
+0002:3f6c      end_of_text_
+0002:0001      _PDDEntryPoint
+Module: header.obj(N:\base\src\dev\mme\mpu401b\header.c)
+0001:0000+     _header
+0001:24f0+     _szDevName
+0002:41c8      RegisterPDD_
+Module: iprintf.obj(N:\base\src\dev\mme\mpu401b\iprintf.c)
+0001:24fa+     _abBuffer
+0001:257a      _fVerbose
+0001:257c+     _digits
+0001:258d+     _ausPowers
+0001:2597+     _aulPowers
+0001:25bf+     _uIndex
+0002:424e+     Write_
+0002:4280+     DecWordToASCII_
+0002:430a+     DecLongToASCII_
+0002:43bc+     HexWordToASCII_
+0002:443b+     HexLongToASCII_
+0002:44d8      iprintf_
+Module: mono.obj(N:\base\src\dev\mme\mpu401b\mono.c)
+0002:0042+     isMono_
+0002:009a      MonoInit_
+0002:015b      MonoWrite_
+0001:0020+     _pusMonoBuf3
+0001:0024+     _pusMonoBuf0
+0001:0028+     _pusMonoBuf
+0001:002c      _fRing3
+0001:002e+     _fIsMono
+0001:03e0+     _selMonoBuf
+Module: malloc.obj(N:\base\src\dev\mme\mpu401b\malloc.c)
+0002:02b6+     _msize_
+0002:02f0+     make_new_free_
+0002:033b      malloc_
+0002:03fa+     remove_
+0002:0459+     compact_
+0002:04fb      free_
+0002:0596+     _memfree_
+0002:05b5+     realloc_
+0002:064b+     validate_
+0002:0695+     quick_validate_
+0002:06cd+     check_heap_
+0001:0032+     _pmbUsed
+Module: strategy.obj(N:\base\src\dev\mme\mpu401b\strategy.cpp)
+0002:07c0+     void near WriteHex( char near *, short unsigned )
+0002:0825+     void near WriteDec( char near *, char unsigned )
+0002:0871+     void near MPU401_StrategyInitComplete( __2bd9g9REQPACKET far * )
+0002:0a5d+     void near MPU401_StrategyOpen( __2bd9g9REQPACKET far * )
+0002:0ae4+     void near MPU401_StrategyClose( __2bd9g9REQPACKET far * )
+0002:0b48      MPU401_StrategyHandler_
+0001:03ee+     void (far * near pfnDeregister)( long unsigned )
+0001:03f2      int unsigned near fLongNames
+Module: init.obj(N:\base\src\dev\mme\mpu401b\init.cpp)
+0002:472f+     void near CopyHeaderToString( char near *, char far * )
+0002:4791+     int near FindDriver( char far * )
+0002:47f3+     void near FindUniqueHeader()
+0002:4873+     void far AutodetectISR3()
+0002:488f+     void far AutodetectISR4()
+0002:48ab+     void far AutodetectISR5()
+0002:48c7+     void far AutodetectISR7()
+0002:48e3+     void far AutodetectISR9()
+0002:48ff+     void far AutodetectISR10()
+0002:491b+     void far AutodetectISR11()
+0002:4937+     void far AutodetectISR12()
+0002:4953+     void far AutodetectISR14()
+0002:496f+     void far AutodetectISR15()
+0002:498b+     void near AutodetectISR( int unsigned )
+0002:4a0a+     int unsigned near AutodetectIRQ( short unsigned )
+0002:4b7a+     int near VerifyIRQ( short unsigned, short unsigned )
+0001:25dc+     short unsigned near ausAutoDetectPort[]
+0001:2602+     int unsigned near uiFlakyIRQ
+0001:2604+     short unsigned near usFlakyIO
+0001:2606+     ADAPTER near * near gpadpt
+0001:2608+     __55o20eDEVICESTRUCT near devicestruct
+0001:2618+     char near szSuccess[]
+0001:2638+     char near szMCA[]
+0001:2650+     char near szSMP[]
+0001:2668+     char near szPrintf[]
+0001:2680+     char near szBadParam[]
+0001:2690+     char near szNoPort[]
+0001:26a8+     char near szIRQnoPort[]
+0001:26d8+     char near szAllocPort[]
+0001:2708+     char near szNoMPU[]
+0001:2728+     char near szNoTimer0[]
+0001:2758+     char near szFoundMPU[]
+0001:2770+     char near szFoundMPUIRQ[]
+0001:2790+     char near szFoundMPUIRQ0[]
+0001:27b8      char near szResolution[]
+0001:27e0+     char near szRMDriver[]
+0001:2800+     char near szRMAdapter[]
+0001:2820+     char near szRMDevice[]
+0001:2840+     char near szCheckingPorts[]
+0001:2858+     char near szMaxMPU[]
+0001:2888+     char near szRMIRQ[]
+0001:28a0+     char near szNOIRQ[]
+0001:28c0+     char near szFlakyIRQ[]
+0001:2900+     char near szNoIOandAuto[]
+0002:4c8c+     int near CheckPort( short unsigned )
+0002:4cf5+     int near AllocatePort( short unsigned, short unsigned )
+0002:56ee+     int near FindPorts()
+0002:57d8      void near MPU401_StrategyInit( __2bd9g9REQPACKET far * )
+0001:2940+     char near szNoIRQandAuto[]
+0001:2978+     char near szNoVdd[]
+0001:299e+     short unsigned near usAutoStatPort
+0001:29a0+     int unsigned near uAutoIRQ
+0001:29a2+     void (near * near pfnISR[])()
+0001:29c2+     void (far * near printf2)( char far *, ... )
+0001:29c6+     __5fqip9DRIVERSTRUCT near driverstruct
+0001:29e2+     __29hrarADAPTERSTRUCT near adapterstruct
+Module: ioctl.obj(N:\base\src\dev\mme\mpu401b\ioctl.cpp)
+0002:0bfd+     void near MPU401_IoctlAudioInit( __2bd9g9REQPACKET far * )
+0002:0d12+     void near MPU401_IoctlAudioControl( __2bd9g9REQPACKET far * )
+0002:0dec+     void near MPU401_IoctlAudioCapability( __2bd9g9REQPACKET far * )
+0002:0ec1      void near MPU401_StrategyIoctl( __2bd9g9REQPACKET far * )
+Module: rmhelp.obj(N:\base\src\dev\mme\mpu401b\rmhelp.cpp)
+0002:5da8      near DRIVER::DRIVER( __5fqip9DRIVERSTRUCT near * )
+0002:5e0c      near DRIVER::~DRIVER()
+0002:5e62      near ADAPTER::ADAPTER( __29hrarADAPTERSTRUCT near *, DRIVER near * )
+0002:5ee0+     near ADAPTER::~ADAPTER()
+0002:5f40      int near ADAPTER::CheckPort( short unsigned, short unsigned, short unsigned, short unsigned )
+0002:5fe8      int near ADAPTER::CheckIRQ( short unsigned, short unsigned, short unsigned )
+0002:6095+     int near ADAPTER::add( RESOURCE near * )
+0002:617e      near DEVICE::DEVICE( __55o20eDEVICESTRUCT near *, ADAPTER near * )
+0002:6240      near DEVICE::~DEVICE()
+0002:62a3      int near DEVICE::add( RESOURCE near * )
+0002:63a2+     near RESOURCE::RESOURCE( long unsigned )
+0002:6417      near RESOURCE::~RESOURCE()
+0002:6466      near PORT_RESOURCE::PORT_RESOURCE( short unsigned, short unsigned, short unsigned, short unsigned )
+0002:64c9      near IRQ_RESOURCE::IRQ_RESOURCE( short unsigned, short unsigned, short unsigned )
+0001:2a1c+     _RM_Help
+0001:2a20      _RM_Help0
+0001:2a24      _RM_Help3
+0001:2a28      _RMFlags
+Module: linklist.obj(N:\base\src\dev\mme\mpu401b\linklist.cpp)
+0002:0f50      void near LINKLIST::init()
+0002:0f78      near LINKLIST::~LINKLIST()
+0002:0feb      near LINKABLE::LINKABLE( LINKLIST near * )
+0002:106b      near LINKABLE::~LINKABLE()
+0002:111a+     near LINKABLE::LINKABLE()
+0002:115b+     void near LINKABLE::MakeFirst()
+0002:11b8+     void near LINKABLE::setList( LINKLIST near * )
+0002:1227+     void near LINKABLE::MakeLast()
+Module: param.obj(N:\base\src\dev\mme\mpu401b\param.cpp)
+0001:2a42      short unsigned near ausCL_BaseIO[]
+0001:2a54      short unsigned near ausCL_IRQ[]
+0001:2a68      char near szCL_DevName[]
+0001:2a70      int unsigned near fParamsSpecified
+0001:2a72      int unsigned near fInt3
+0001:2a74      int unsigned near fNoRMIO
+0001:2a76      int unsigned near fNoRMIRQ
+0001:2a78      int unsigned near fNoCheckIO
+0001:2a7a      int unsigned near fNoCheckIRQ
+0001:2a7c      int unsigned near fNoTimer0
+0002:6539+     short unsigned near sz2us( char far *, int )
+0002:65d6+     int near IsWhitespace( char )
+0002:661f+     char far * near SkipWhite( char far * )
+0002:667b+     int near CopyDevicename( char far * )
+0002:675d+     int near DoOption( char far * )
+0002:6a02+     int near DoParm( char, int, char far * )
+0002:6c2a+     int near ParseParm( char far *, int )
+0002:6d3f      int near GetParms( char far * )
+0001:2a7e      int near iCL_Resolution
+0001:2a80      int unsigned near fOnlyOne
+0001:2a82      short unsigned near usRMWordSize
+0001:2a84      short unsigned near usRMIOFlag
+0001:2a86      short unsigned near usRMIRQFlag
+Module: register.obj(N:\base\src\dev\mme\mpu401b\register.cpp)
+0002:6e16+     int unsigned near VerifyKey()
+0001:2a90+     char near abKey[]
+0001:2b12+     int unsigned near fValidKey
+Module: isr.obj(N:\base\src\dev\mme\mpu401b\isr.cpp)
+0002:1287      near IRQ::IRQ( int unsigned, int )
+0002:12e0      near IRQ::~IRQ()
+0002:1347+     void near IRQ::handler()
+0002:13b3+     void far MPU401_ISR3()
+0002:13e5+     void far MPU401_ISR4()
+0002:1417+     void far MPU401_ISR5()
+0002:1449+     void far MPU401_ISR7()
+0002:147b+     void far MPU401_ISR9()
+0002:14ad+     void far MPU401_ISR10()
+0002:14df+     void far MPU401_ISR11()
+0002:1511+     void far MPU401_ISR12()
+0002:1543+     void far MPU401_ISR13()
+0002:1575+     void far MPU401_ISR14()
+0002:15a7+     void far MPU401_ISR15()
+0002:15d9+     int near IRQ::enable()
+0002:1674+     void near IRQ::disable()
+0002:16ad+     void near IRQ::add( ISR near * )
+0002:16e3+     void near IRQ::remove( ISR near * )
+0002:1750      near ISR::ISR( IRQ near * )
+0002:1790+     near ISR::~ISR()
+0001:008a+     int (near * near npfnISR[])()
+0001:03f4      int unsigned near fMCA
+0001:03f6      IRQ near * near apirq[]
+Module: idc.obj(N:\base\src\dev\mme\mpu401b\idc.cpp)
+0002:17c7      _Open
+0002:1913      _Close
+0002:19c1      _RecvByte
+0002:1a11      _RecvString
+0002:1a6d+     _IOCtl
+0001:0416+     int unsigned near fOpenedSend[]
+0001:0428+     int unsigned near fOpenedRecv[]
+Module: mpu401.obj(N:\base\src\dev\mme\mpu401b\mpu401.cpp)
+0002:1aa5      __wcpp_4_lcl_register__
+0002:1abb      ___wcpp_4_data_module_dtor_ref_
+0002:1ad1+     near AUDIOHW::AUDIOHW()
+0002:1b0d      near MPU::MPU( short unsigned )
+0002:1b7a+     int near MPU::read()
+0002:1bd9+     int near MPU::write( char unsigned )
+0002:1c36      int near MPU::command( char unsigned )
+0002:1d3b      int near MPU::init()
+0002:1da3+     int near MPU::start()
+0002:1dc8+     void near MPU::stop()
+0002:1df5+     void near MPU::pause()
+0002:1e22+     void near MPU::resume()
+0002:1e3b      void near MPU::setIRQ( IRQ near * )
+0002:1e5e+     void near MPU::silence()
+0002:1ee5      near MPUISR::MPUISR( IRQ near *, MPU near * )
+0002:1f2c+     int near MPUISR::handler( int unsigned )
+0002:2222+     near MPU::~MPU()
+0002:2271+     near AUDIOHW::~AUDIOHW()
+0002:2014+     int near MPUread( short unsigned )
+0002:206e      int near MPUwrite( short unsigned, char unsigned )
+0002:20c6      int near MPUcommand( short unsigned, char unsigned )
+0002:21c0+     int near MPUinit( short unsigned )
+0001:00bc+     LINKLIST near * near pllMPU
+0001:043a      LINKLIST near llMPU
+0001:043e      void (far * near pfnSendByte)( long unsigned, char unsigned )
+0001:0442      int unsigned near fQuietInit
+0001:0444      int unsigned near fSMP
+Module: vdd.obj(N:\base\src\dev\mme\mpu401b\vdd.cpp)
+0002:22a0      _PDDEntryPoint2
+0001:0454+     long unsigned near ulPDDHandle
+0001:0458+     long unsigned near VDDIDC_Offset
+0001:045c+     short unsigned near VDDIDC_Sel
+0001:045e      int unsigned near fInUse
+0001:0460      int unsigned near fEnableVDD
+0001:0468+     _ADAPTERDATA near adapterdata
+Module: timer0.obj(N:\base\src\dev\mme\mpu401b\timer0.cpp)
+0002:2670+     near TIMER0::~TIMER0()
+0002:2509      near TIMER0::TIMER0()
+0002:2546+     int near TIMER0::enable()
+0002:25bd+     void near TIMER0::disable()
+0002:25ee+     void far TIMER0::callback()
+0002:2620+     void near TIMER0::handler()
+0001:00d6      long unsigned far * near pulTimer
+0001:04c0      int (far * near pfnTimer)( int, long unsigned, long unsigned )
+0001:04c4+     long unsigned near ulFakeTimer0
+Module: stream.obj(N:\base\src\dev\mme\mpu401b\stream.cpp)
+0002:26e0      void near STREAM::ReturnBuffer( int unsigned )
+0002:275f+     void near STREAM::ReturnBuffers()
+0002:27ae      void near STREAM::ProcessEvents()
+0002:27f6      long unsigned near STREAM::Control( _ddcmd_control_parm far * )
+0002:2ac8      long unsigned near STREAM::Write( char far *, int unsigned )
+0002:2b51      void near STREAM::Register( _ddcmd_register_parm far * )
+0002:2bb2      void near STREAM::DeRegister()
+0002:2bff      near STREAM::STREAM( long unsigned )
+0002:2cb2      near STREAM::~STREAM()
+0002:2d04      STREAM near * near FindStream( long unsigned )
+0002:2d78      STREAM near * near FindFile( long unsigned )
+0001:0110      char unsigned near bMasterVolume
+0001:04c8      int unsigned near uNumStreams
+0001:04ca      LINKLIST near llStreams
+Module: event.obj(N:\base\src\dev\mme\mpu401b\event.cpp)
+0002:2dfb+     void near EVENT::SetNext()
+0002:2e75      void near EVENT::Report()
+0002:2fad      near EVENT::EVENT( STREAM near *, long unsigned, _CONTROL_PARM far * )
+0002:3100+     near EVENT::~EVENT()
+0002:3177      EVENT near * near FindEvent( long unsigned )
+0002:31d9+     void near DeleteEvents( STREAM near * )
+0001:04ce      LINKLIST near llEvents
+0001:04d2      int unsigned near fRecurringSupported
+0001:04d4      EVENT near * near peventNext
+Module: ssm_idc.obj(N:\base\src\dev\mme\mpu401b\ssm_idc.cpp)
+0002:3245      _DDCMD_EntryPoint
+Module: midistrm.obj(N:\base\src\dev\mme\mpu401b\midistrm.cpp)
+0002:3497+     void far MPU401_Timer0Hook()
+0002:34c1+     void far MPU401_SysTimerHook()
+0002:34ef+     int near MIDISTREAM::Start()
+0002:35c4+     void near MIDISTREAM::Stop()
+0002:3653+     void near MIDISTREAM::Pause()
+0002:3683+     void near MIDISTREAM::Resume()
+0002:369c+     void near MIDISTREAM::CalcDelay()
+0002:375f+     void near MIDISTREAM::Deal( char unsigned )
+0002:3b46+     void near MIDISTREAM::Process()
+0002:3c7c      near MIDISTREAM::MIDISTREAM( long unsigned, MPU near * )
+0002:6e99      InitMidiStream_
+0001:0130+     _uiMilliseconds
+0001:0132+     _uiMicroseconds
+0001:0134+     long unsigned near ulMicroseconds
+0001:04d6+     int unsigned near uPort
+0001:04d8+     int unsigned near fTimerActive
+0001:04da+     MIDISTREAM near * near pstreamCurrent
+0002:3d14+     near MIDISTREAM::~MIDISTREAM()
+Module: build_id.obj(N:\base\src\dev\mme\mpu401b\build_id.c)
+0001:2b14+     _usBuildYear
+0001:2b16+     _usBuildMonth
+0001:2b18+     _usBuildDay
+0001:2b1a      _szInit
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\devhelp.c)
+0001:04dc      _Device_Help
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\iodelay.asm)
+0002:3d64      iodelay_
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\cpp.cpp)
+0002:3d6e*     __wcpp_2_undefed_cdtor__
+0002:3d70*     __wcpp_2_undefined_member_function__
+0002:3d72*     __wcpp_2_pure_error__
+0002:3d74*     __wcpp_2_undef_vfun__
+0002:3d76      __wcpp_4_undefed_cdtor__
+0002:3d78*     __wcpp_4_undefined_member_function__
+0002:3d7a      __wcpp_4_pure_error__
+0002:3d7c*     __wcpp_4_undef_vfun__
+0002:3d7e      __wcpp_4_dtor_array_store__
+0002:3d80      void near * near operator new( int unsigned )
+0002:3d83      void near operator delete( void near * )
+0002:3d86      void near * near operator new( int unsigned, void near * )
+0002:3d8d*     void near * near operator new []( int unsigned )
+0002:3d90      void near operator delete []( void near * )
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\printf.c)
+0001:0150      _printf
+0002:3d93      _printf_
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmcdrvr.c)
+0002:3f6c+     MY_DEVHELP_ATTACHDD
+0002:3f8e      _RMCreateDriver
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmddrvr.c)
+0002:4008      _RMDestroyDriver
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmcadpt.c)
+0002:4034      _RMCreateAdapter
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmdadpt.c)
+0002:406e      _RMDestroyAdapter
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmares.c)
+0002:409a      _RMAllocResource
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmdres.c)
+0002:40d4      _RMDeallocResource
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmmres.c)
+0002:4100      _RMModifyResources
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmcdev.c)
+0002:412c      _RMCreateDevice
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmddev.c)
+0002:4166      _RMDestroyDevice
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\ctype.c)
+0002:3d94      toupper_
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\string.c)
+0002:3ee6*     strncpy_
+0002:3eb9*     _fstrncpy_
+0002:3e58      _fstrnicmp_
+0002:3e03*     strstr_
+0002:3da4*     _fstrstr_
+Module: ..\wpddlib\runtime.lib(N:\base\src\dev\mme\wpddlib\math.asm)
+0002:3f04      __U4M
+0002:3f04      __I4M
+0002:3f20      __U4D
+0002:3f46*     __I4D
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmcall.c)
+0002:4192      _CallRM
+0002:41ba+     _GetCS
+Module: ..\..\resource\rmcalls\rmcalls.lib(rmdata.c)
+0001:0160      _RMIDCTable
+
+
+                        +---------------------+
+                        |   Module Segments   |
+                        +---------------------+
+
+! = 32-bit segment
+c = initialized communal data
+
+Module          Segment               Class           Address         Size
+======          =======               =====           =======         ====
+
+N:\base\src\dev\mme\mpu401b\segments.asm _HEADER DATA 0001:0000       00000000
+                _DATA                 DATA           0001:0020        00000000
+                CONST                 DATA           0001:016c        00000000
+                CONST2                DATA           0001:0280        00000000
+                _BSS                  BSS            0001:03e0        00000000
+                _HEAP                 ENDDS          0001:04e0        0000200c
+                _ENDDS                ENDDS          0001:24ec        00000001
+                _INITDATA             ENDDS          0001:24f0        00000000
+                _TEXT                 CODE           0002:0000        00000042
+                _ENDCS                CODE           0002:3f6c        00000000
+                RMCODE                CODE           0002:3f6c        00000000
+                _INITTEXT             CODE           0002:41c8        00000000
+N:\base\src\dev\mme\mpu401b\header.c _TEXT CODE      0002:0042        00000000
+                CONST                 DATA           0001:016c        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:0020        00000000
+                _BSS                  BSS            0001:03e0        00000000
+                _HEADER               DATA           0001:0000        0000001e
+                _INITDATA             ENDDS          0001:24f0        00000009
+                _INITTEXT             CODE           0002:41c8        00000086
+                $$SYMBOLS             DEBSYM         0000:0000  !     0000046f
+                $$TYPES               DEBTYP         0000:0000  !     000001a4
+N:\base\src\dev\mme\mpu401b\iprintf.c _TEXT CODE     0002:0042        00000000
+                CONST                 DATA           0001:016c        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:0020        00000000
+                _BSS                  BSS            0001:03e0        00000000
+                _INITDATA             ENDDS          0001:24fa        000000c7
+                _INITTEXT             CODE           0002:424e        000004e1
+                $$SYMBOLS             DEBSYM         0000:046f  !     0000070b
+                $$TYPES               DEBTYP         0000:01a4  !     00000198
+N:\base\src\dev\mme\mpu401b\mono.c _TEXT CODE        0002:0042        00000274
+                CONST                 DATA           0001:016c        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:0020        00000012
+                _BSS                  BSS            0001:03e0        00000002
+                $$SYMBOLS             DEBSYM         0000:0b7a  !     00000545
+                $$TYPES               DEBTYP         0000:033c  !     000000e8
+N:\base\src\dev\mme\mpu401b\malloc.c _TEXT CODE      0002:02b6        0000050a
+                CONST                 DATA           0001:016c        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:0032        00000002
+                _BSS                  BSS            0001:03e2        00000000
+                $$SYMBOLS             DEBSYM         0000:10bf  !     000003fa
+                $$TYPES               DEBTYP         0000:0424  !     0000014c
+N:\base\src\dev\mme\mpu401b\strategy.cpp _TEXT CODE  0002:07c0        0000043d
+                CONST                 DATA           0001:016c        00000009
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:0040        0000003b
+                _BSS                  BSS            0001:03e2        00000012
+                $$SYMBOLS             DEBSYM         0000:14b9  !     00002ade
+                $$TYPES               DEBTYP         0000:0570  !     000081e8
+N:\base\src\dev\mme\mpu401b\init.cpp _TEXT CODE      0002:0bfd        00000000
+                CONST                 DATA           0001:0175        0000007d
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:007b        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                _INITTEXT             CODE           0002:472f        00001679
+                _INITDATA             ENDDS          0001:25d0        0000042a
+                $$SYMBOLS             DEBSYM         0000:3f97  !     000037d3
+                $$TYPES               DEBTYP         0000:8758  !     00008ce4
+N:\base\src\dev\mme\mpu401b\ioctl.cpp _TEXT CODE     0002:0bfd        00000353
+                CONST                 DATA           0001:01f2        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:007b        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                $$SYMBOLS             DEBSYM         0000:776a  !     00002903
+                $$TYPES               DEBTYP         0000:143c  !     00007afc
+N:\base\src\dev\mme\mpu401b\rmhelp.cpp _TEXT CODE    0002:0f50        00000000
+                CONST                 DATA           0001:01f2        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:007b        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                _INITTEXT             CODE           0002:5da8        00000791
+                _INITDATA             ENDDS          0001:2a00        0000002c
+                $$SYMBOLS             DEBSYM         0000:a06d  !     00001bcb
+                $$TYPES               DEBTYP         0000:8f38  !     00003548
+N:\base\src\dev\mme\mpu401b\linklist.cpp _TEXT CODE  0002:0f50        00000337
+                CONST                 DATA           0001:01f2        00000000
+                CONST2                DATA           0001:0280        00000000
+                _DATA                 DATA           0001:007b        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                $$SYMBOLS             DEBSYM         0000:bc38  !     00000319
+                $$TYPES               DEBTYP         0000:c480  !     0000036c
+                CONST2                DATA           0001:0280 c      00000004
+                CONST2                DATA           0001:0290 c      0000000e
+                _DATA                 DATA           0001:007b c      0000000e
+N:\base\src\dev\mme\mpu401b\param.cpp _TEXT CODE     0002:1287        00000000
+                CONST                 DATA           0001:01f2        00000088
+                CONST2                DATA           0001:029e        00000000
+                _DATA                 DATA           0001:0089        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                _INITTEXT             CODE           0002:6539        000008dd
+                _INITDATA             ENDDS          0001:2a30        00000058
+                $$SYMBOLS             DEBSYM         0000:bf51  !     00001c31
+                $$TYPES               DEBTYP         0000:c7ec  !     00004d00
+N:\base\src\dev\mme\mpu401b\register.cpp _TEXT CODE  0002:1287        00000000
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:029e        00000000
+                _DATA                 DATA           0001:0089        00000000
+                _BSS                  BSS            0001:03f4        00000000
+                _INITTEXT             CODE           0002:6e16        00000083
+                _INITDATA             ENDDS          0001:2a90        00000084
+                $$SYMBOLS             DEBSYM         0000:db82  !     000000de
+                $$TYPES               DEBTYP         0000:14ec  !     000000b8
+N:\base\src\dev\mme\mpu401b\isr.cpp _TEXT CODE       0002:1287        00000540
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:02a0        00000000
+                _DATA                 DATA           0001:008a        00000020
+                _BSS                  BSS            0001:03f4        00000022
+                $$SYMBOLS             DEBSYM         0000:dc60  !     00001613
+                $$TYPES               DEBTYP         0000:15a4  !     00002da8
+                CONST2                DATA           0001:02a0 c      0000000a
+                CONST2                DATA           0001:02b0 c      00000004
+                CONST2                DATA           0001:02c0 c      0000000e
+                _DATA                 DATA           0001:00aa c      00000009
+N:\base\src\dev\mme\mpu401b\idc.cpp _TEXT CODE       0002:17c7        000002bd
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:02ce        00000000
+                _DATA                 DATA           0001:00b3        00000000
+                _BSS                  BSS            0001:0416        00000024
+                $$SYMBOLS             DEBSYM         0000:f273  !     000010b0
+                $$TYPES               DEBTYP         0000:434c  !     00003474
+N:\base\src\dev\mme\mpu401b\mpu401.cpp _TEXT CODE    0002:1a84        0000079e
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:02d0        00000006
+                _DATA                 DATA           0001:00b4        0000000a
+                _BSS                  BSS            0001:043a        0000000c
+                XIB                   DATA           0001:03c0        00000000
+                XI                    DATA           0001:03c0        00000006
+                XIE                   DATA           0001:03d2        00000000
+                $$SYMBOLS             DEBSYM         0000:0323  !     00001831
+                $$TYPES               DEBTYP         0000:77c0  !     00003c44
+                _TEXT                 CODE           0002:2222 c      0000004f
+                CONST2                DATA           0001:02e0 c      0000000e
+                CONST2                DATA           0001:02f0 c      0000000e
+                CONST2                DATA           0001:0300 c      00000004
+                CONST2                DATA           0001:0310 c      0000000e
+                _DATA                 DATA           0001:00be c      00000009
+                _TEXT                 CODE           0002:2271 c      0000002f
+                CONST2                DATA           0001:0320 c      0000000e
+                _DATA                 DATA           0001:00c8 c      0000000e
+N:\base\src\dev\mme\mpu401b\vdd.cpp _TEXT CODE       0002:22a0        00000269
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:032e        00000000
+                _DATA                 DATA           0001:00d6        00000000
+                _BSS                  BSS            0001:0450        00000068
+                $$SYMBOLS             DEBSYM         0000:1b54  !     000025f2
+                $$TYPES               DEBTYP         0000:b404  !     00006b6c
+N:\base\src\dev\mme\mpu401b\timer0.cpp _TEXT CODE    0002:2509        00000167
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:0330        00000000
+                _DATA                 DATA           0001:00d6        00000004
+                _BSS                  BSS            0001:04c0        00000008
+                $$SYMBOLS             DEBSYM         0000:4146  !     000012c4
+                $$TYPES               DEBTYP         0000:1f70  !     000030e0
+                CONST2                DATA           0001:0330 c      0000000a
+                _TEXT                 CODE           0002:2670 c      0000004f
+                CONST2                DATA           0001:0340 c      0000000e
+                _DATA                 DATA           0001:00da c      0000000c
+N:\base\src\dev\mme\mpu401b\stream.cpp _TEXT CODE    0002:26bf        0000071b
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:0350        00000006
+                _DATA                 DATA           0001:00f0        00000021
+                _BSS                  BSS            0001:04c8        00000006
+                XIB                   DATA           0001:03c0        00000000
+                XI                    DATA           0001:03c6        00000006
+                XIE                   DATA           0001:03d2        00000000
+                $$SYMBOLS             DEBSYM         0000:540a  !     0000289e
+                $$TYPES               DEBTYP         0000:5050  !     00006cf4
+                CONST2                DATA           0001:0360 c      0000000e
+N:\base\src\dev\mme\mpu401b\event.cpp _TEXT CODE     0002:2dda        0000046b
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:0370        00000006
+                _DATA                 DATA           0001:0111        00000008
+                _BSS                  BSS            0001:04ce        00000008
+                XIB                   DATA           0001:03c0        00000000
+                XI                    DATA           0001:03cc        00000006
+                XIE                   DATA           0001:03d2        00000000
+                $$SYMBOLS             DEBSYM         0000:7ca8  !     0000251e
+                $$TYPES               DEBTYP         0000:bd44  !     00006880
+                CONST2                DATA           0001:0380 c      00000004
+                _DATA                 DATA           0001:0119 c      0000000b
+                CONST2                DATA           0001:0390 c      0000000e
+N:\base\src\dev\mme\mpu401b\ssm_idc.cpp _TEXT CODE   0002:3245        00000252
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:039e        00000000
+                _DATA                 DATA           0001:0124        00000000
+                _BSS                  BSS            0001:04d6        00000000
+                $$SYMBOLS             DEBSYM         0000:a1c6  !     000026e6
+                $$TYPES               DEBTYP         0000:25c4  !     00007650
+N:\base\src\dev\mme\mpu401b\midistrm.cpp _TEXT CODE  0002:3497        0000087d
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:03a0        00000000
+                _DATA                 DATA           0001:0130        00000008
+                _BSS                  BSS            0001:04d6        00000006
+                _INITTEXT             CODE           0002:6e99        00000086
+                _TEXT                 CODE           0002:3d14        00000000
+                $$SYMBOLS             DEBSYM         0000:c8ac  !     00002bcd
+                $$TYPES               DEBTYP         0000:9c14  !     00007c4c
+                CONST2                DATA           0001:03a0 c      0000000e
+                CONST2                DATA           0001:03b0 c      0000000e
+                _DATA                 DATA           0001:0140 c      00000010
+                _TEXT                 CODE           0002:3d14 c      0000004f
+N:\base\src\dev\mme\mpu401b\trace.c _TEXT CODE       0002:3d63        00000000
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:03be        00000000
+                _DATA                 DATA           0001:0150        00000000
+                $$SYMBOLS             DEBSYM         0000:f479  !     00000030
+                $$TYPES               DEBTYP         0000:1860  !     00000004
+N:\base\src\dev\mme\mpu401b\build_id.c _TEXT CODE    0002:3d63        00000000
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:03be        00000000
+                _DATA                 DATA           0001:0150        00000000
+                _INITDATA             ENDDS          0001:2b14        00000051
+                $$SYMBOLS             DEBSYM         0000:f4a9  !     00000086
+                $$TYPES               DEBTYP         0000:1864  !     00000010
+N:\base\src\dev\mme\wpddlib\devhelp.c _TEXT CODE     0002:3d63        00000000
+                CONST                 DATA           0001:027a        00000000
+                CONST2                DATA           0001:03be        00000000
+                _DATA                 DATA           0001:0150        00000000
+                _BSS                  BSS            0001:04dc        00000004
+N:\base\src\dev\mme\wpddlib\iodelay.asm _HEADER DATA 0001:0020        00000000
+                _DATA                 DATA           0001:0150        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                _ENDDS                ENDDS          0001:24f0        00000000
+                _INITDATA             ENDDS          0001:2b68        00000000
+                _ENDINITDATA          ENDDS          0001:2b68        00000000
+                _TEXT                 CODE           0002:3d64        0000000a
+                _ENDCS                CODE           0002:3f6c        00000000
+                _INITTEXT             CODE           0002:6f20        00000000
+N:\base\src\dev\mme\wpddlib\cpp.cpp _TEXT CODE       0002:3d6e        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _DATA                 DATA           0001:0150        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                _TEXT                 CODE           0002:3d6e        00000002
+                _TEXT                 CODE           0002:3d70        00000002
+                _TEXT                 CODE           0002:3d72        00000002
+                _TEXT                 CODE           0002:3d74        00000002
+                _TEXT                 CODE           0002:3d76        00000002
+                _TEXT                 CODE           0002:3d78        00000002
+                _TEXT                 CODE           0002:3d7a        00000002
+                _TEXT                 CODE           0002:3d7c        00000002
+                _TEXT                 CODE           0002:3d7e        00000002
+                _TEXT                 CODE           0002:3d80        00000003
+                _TEXT                 CODE           0002:3d83        00000003
+                _TEXT                 CODE           0002:3d86        00000007
+                _TEXT                 CODE           0002:3d8d        00000003
+                _TEXT                 CODE           0002:3d90        00000003
+N:\base\src\dev\mme\wpddlib\printf.c _TEXT CODE      0002:3d93        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _DATA                 DATA           0001:0150        00000004
+                _BSS                  BSS            0001:04e0        00000000
+                _TEXT                 CODE           0002:3d93        00000001
+rmcdrvr.c       _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:0154        00000009
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:3f6c        0000009c
+rmddrvr.c       _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:4008        0000002c
+rmcadpt.c       _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:4034        0000003a
+rmdadpt.c       _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:406e        0000002c
+rmares.c        _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:409a        0000003a
+rmdres.c        _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:40d4        0000002c
+rmmres.c        _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:4100        0000002c
+rmcdev.c        _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:412c        0000003a
+rmddev.c        _TEXT                 CODE           0002:3d94        00000000
+                _DATA                 DATA           0001:015e        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:4166        0000002c
+N:\base\src\dev\mme\wpddlib\ctype.c _TEXT CODE       0002:3d94        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _DATA                 DATA           0001:015e        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                _TEXT                 CODE           0002:3d94        00000010
+N:\base\src\dev\mme\wpddlib\string.c _TEXT CODE      0002:3da4        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _DATA                 DATA           0001:015e        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                _TEXT                 CODE           0002:3da4        0000005f
+                _TEXT                 CODE           0002:3e03        00000055
+                _TEXT                 CODE           0002:3e58        00000061
+                _TEXT                 CODE           0002:3eb9        0000002d
+                _TEXT                 CODE           0002:3ee6        0000001e
+N:\base\src\dev\mme\wpddlib\math.asm _HEADER DATA    0001:0020        00000000
+                _DATA                 DATA           0001:0160        00000000
+                CONST                 DATA           0001:027c        00000000
+                CONST2                DATA           0001:03c0        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                _ENDDS                ENDDS          0001:24f0        00000000
+                _INITDATA             ENDDS          0001:2b68        00000000
+                _ENDINITDATA          ENDDS          0001:2b68        00000000
+                _TEXT                 CODE           0002:3f04        00000067
+                _ENDCS                CODE           0002:3f6c        00000000
+                _INITTEXT             CODE           0002:6f20        00000000
+rmcall.c        _TEXT                 CODE           0002:3f6c        00000000
+                _DATA                 DATA           0001:0160        00000000
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:4192        00000036
+rmdata.c        _TEXT                 CODE           0002:3f6c        00000000
+                _DATA                 DATA           0001:0160        0000000c
+                CONST                 CONST          0001:2b68        00000000
+                _BSS                  BSS            0001:04e0        00000000
+                RMCODE                CODE           0002:41c8        00000000
+
+
+                        +----------------------+
+                        |   Imported Symbols   |
+                        +----------------------+
+
+Symbol                              Module
+======                              ======
+
+DOSIODELAYCNT                       DOSCALLS
+DOS16PUTMESSAGE                     MSG
+DOS16OPEN                           DOSCALLS
+DOS16CLOSE                          DOSCALLS
+
+
+                        +--------------------+
+                        |   Libraries Used   |
+                        +--------------------+
+
+..\..\..\..\lib\os2286.lib
+..\wpddlib\runtime.lib
+..\..\resource\rmcalls\rmcalls.lib
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  0200 (512.)
+Memory size:  9a88 (39560.)
+Link time: 00:00.72

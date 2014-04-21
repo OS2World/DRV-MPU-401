@@ -1,0 +1,40 @@
+MPUTRACE - The Theta Band MPU-401 driver tracing facility
+
+This application is used to debug problems with the MPU-401 device driver.
+You should only use this application when instructed to do so by Theta Band
+Software technicaly support.  It only works with a "debug version" of
+MPU401.SYS, which is NOT the version that is normally shipped.  If you
+try to use MPUTRACE with a non-debug version of MPU401.SYS, you will get
+a message that reads "Error 3 while trying to open MPU-401 device driver".
+
+This software provides a real-time display of events that occur in the MPU-401
+driver.  Any time the driver does something interesting, MPUTRACE will
+report it.  The list of events that MPUTRACE creates is called an event log.
+This event log is used by Theta Band Software to determine what the MPU-401
+driver is doing.
+
+Instructions:
+
+1. Install the MPU-401 device driver and reboot the computer.
+
+2. From an "OS/2 Window" command prompt, run MPUTRACE.EXE.  It will display
+text something like this:
+
+MPUTRACE - Theta Band Software MPU-401 Driver Trace Utility
+Opening \DEV\NPU4011$
+Creating thread
+Thread() started
+Hit any key to quit. Program will then exit after the next message.
+
+3. Now you may use the MPU-401 driver as normal.  Typically, you would do
+whatever necessary to recreate the problem you are experiencing.  As you
+perform these steps, MPUTRACE displays lines of text that look something
+like this:
+
+TRACE_STRATEGY_OPEN (168 0xa8)
+TRACE_STRATEGY_IOCTL_CAPS (513 0x201)
+TRACE_STRATEGY_IOCTL_INIT (1 0x1)
+TRACE_STRATEGY_IOCTL_CTRL (0 0x0)
+TRACE_DDCMD_REGISTER (691011584 0x29300000)
+
+4. At this point, Theta Band Software will give you specific instructions.

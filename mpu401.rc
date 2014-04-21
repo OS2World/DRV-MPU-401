@@ -1,0 +1,51 @@
+/******************************************************************************
+* Resource file for MPU-401 Audio device capabilities
+*
+* MMPM/2 loads this information to determine the streaming
+* requirements of the audio device and the devices capabilities
+* for resource management.
+*
+* For devices that have other characteristics such as wave and midi at
+* the same time, MMPM/2 provides resource capabilities information in
+* the \mmos2\dll\audioif DLL.
+* For devices with equivalent characteristics of an audioif known device, you
+* can code cardinfo.rc to point to audioif.dll and index the RCDATA for the
+* particular type of device (see audio.h header file for list)
+*
+* In the file below, the RCDATA field is set to a value defined in sample.h.
+* The value chosen must be unique for the DLL and must be provided to
+* MMPM/2 via the cardinfo.rc file.  This value eventually lands in MMPM2.INI.
+* The value chosen for this field is not important so long as you use the
+* same value in cardinfo.rc where you tell the MMPM/2 ampmixer how to load
+* find this information.
+******************************************************************************/
+
+#define INCL_32
+#include <os2.h>
+#include <os2me.h>
+// #include <mcd.h>
+#include <audio.h>
+
+// values for RC file
+#define  STATIC_RATE             0L
+#define  BEGIN_CONTINUOUS        1L
+#define  END_CONTINUOUS          2L
+
+
+// Classes used for resource management
+#define  PCM_CLASS               1
+#define  MIDI_CLASS              2
+
+
+RCDATA MPU401           /* Number must match number on RCID= field in */
+BEGIN                   /* the MMPM2.INI file (from cardinfo.RC file) */
+                        /* Textual description of the device     */
+"MPU-401",
+
+MPU401, 0,                   /* Adapter specific, (1,0 ACPA) (0,0 others)  */
+0L,                     /* No longer used, but required for pad       */
+
+1L,                     /* Number of table entries that follow        */
+
+DATATYPE_MIDI,     SUBTYPE_NONE,     0,      8,  1, STATIC_RATE,      MIDI_CLASS,  1, 0,      0
+END

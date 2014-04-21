@@ -1,0 +1,60 @@
+/* CONTROL.SCR
+
+   MODIFICATION HISTORY
+   DATE       PROGRAMMER   COMMENT
+   21-Nov-96  Timur Tabi   Creation
+*/
+
+package="Audio Adapter Installation"
+codepage=437
+filelist="mpu401.scr"
+groupcount=2
+munitcount=1
+
+medianame="Audio Adapter Diskette "
+
+sourcedir="\\"= 0
+
+
+destindir="\\MMOS2\\DLL\\"     = 2
+destindir="\\MMOS2\\HELP\\"    = 7
+destindir="\\MMOS2\\"          = 0
+destindir="\\MMOS2\\INSTALL\\" = 4
+destindir="\\MMOS2\\MOVIES\\"  = 3
+destindir="\\MMOS2\\MACROS\\"  = 6
+destindir="\\MMOS2\\DSP\\"     = 5
+destindir="\\MMOS2\\SOUNDS\\"  = 9
+
+
+/*  Base file to be run after Audio Adapter Installed.                 */
+/*  This will update the user's Multimedia Folder with new information */
+/*  Do not change this group.                                          */
+ssgroup=0
+ssname="mmbase"
+ssversion="1.1.0"
+sstermdll="ITERM.DLL"
+sstermdllentry="ITermEntry"
+
+
+/* Audio Adapter Group                                                      */
+/* Modify this group to describe your adapter by changing the following:    */
+/*  ssgroup   - Change this number only if you add a new group.             */
+/*  ssname    - Put your adapter's name here                                */
+/*  ssversion - Put the version number of your device driver here           */
+/*  sssize    - Put the total size (in KB) of your device driver(s), help   */
+/*              file, GENIN.DLL, GENINMRI.DLL, & any other files you install*/
+/*  ssdllinputparms - this must match the ID number used in cardinfo.dll    */
+/*  ssicon    - The icon that MINSTALL uses for your driver                 */
+/*  ssinich   - Uncomment this line if you are adding a MIDI Map Table      */
+
+ssgroup=1
+ssname="MPU-401 MIDI Device Driver"
+ssversion="2.0.0"
+sssize=109
+ssdll="genin.dll"
+ssdllentry="InitGenin"
+ssdllinputparms="1"
+ssselect="VERSION"
+ssicon="midiplay.ico"
+ssselect="YES"
+

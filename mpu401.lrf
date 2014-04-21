@@ -1,0 +1,37 @@
+option description '@#TBS:2.1.8#@ Theta Band Software MPU-401 Audio Driver'
+system os2 dll
+option quiet
+option verbose
+option caseexact
+option symfile=mpu401.dbg
+debug codeview
+option cache
+option map
+name mpu401.sys
+file segments.obj
+file header.obj
+file iprintf.obj
+file mono.obj
+file malloc.obj
+file strategy.obj
+file init.obj
+file ioctl.obj
+file rmhelp.obj
+file linklist.obj
+file param.obj
+file register.obj
+file isr.obj
+file idc.obj
+file mpu401.obj
+file vdd.obj
+file timer0.obj
+file stream.obj
+file event.obj
+file ssm_idc.obj
+file midistrm.obj
+file trace.obj
+file build_id.obj
+import DOSIODELAYCNT DOSCALLS.427
+library ..\..\..\..\lib\os2286.lib
+library ..\wpddlib\runtime.lib
+library ..\..\resource\rmcalls\rmcalls.lib

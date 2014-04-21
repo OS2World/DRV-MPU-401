@@ -1,0 +1,1134 @@
+; MPU401.IT
+; This is a help file that is used when installing the MPU-401 driver.
+
+#define   OL_DOC_HTML_8_3_NAMES
+#define   OL_DOC_HTML_ALLOW_ROBOTS
+#define   OL_DOC_HTML_BODY  <BODY BGCOLOR="#FFFFFF">
+;#define   OL_DOC_HEADINGS_DONT_GENERATE_TITLE
+
+;#define OL_DOC_HTML_PREV
+;#define OL_DOC_HTML_NEXT
+;#define OL_DOC_HTML_TOP
+;#define OL_DOC_HTML_BOTTOM
+;#define OL_DOC_HTML_CONTENTS
+
+#include "ol_doc.dh"
+
+#define Bitmap <$DefineImage Alias="BMPALIAS" Image={$#1}><$Image "BMPALIAS">
+
+#define ID_ABOUT_TB              1
+#define ID_ABOUT_MMPACK          2
+#define ID_ABOUT_MPU             3
+
+#define ID_CMD_LINE              4
+#define ID_WINOS2                6
+
+#define ID_CL_P                  10
+#define ID_CL_I                  11
+#define ID_CL_N                  12
+#define ID_CL_R                  13
+#define ID_CL_V                  14
+#define ID_CL_O                  15
+#define ID_CL_OLONGNAME          16
+#define ID_CL_OQUIETINIT         17
+#define ID_CL_ONORMIO            18
+#define ID_CL_OSHAREDIO          19
+#define ID_CL_OMULTIIO           20
+#define ID_CL_ONORMIRQ           21
+#define ID_CL_OSHAREDIRQ         22
+#define ID_CL_OMULTIIRQ          23
+#define ID_CL_ONOCHECKIO         24
+#define ID_CL_ONOCHECKIRQ        25
+#define ID_CL_ONOTIMER0          26
+#define ID_CL_O10BITS            27
+#define ID_CL_O16BITS            28
+#define ID_CL_OONLYONE           29
+#define ID_CL_OAUDIOVDD          30
+
+#define ID_OTHER_DRIVERS         40
+#define ID_OTHER_SBPRO           41
+#define ID_OTHER_SB16            42
+#define ID_OTHER_TERRATEC        43
+#define ID_OTHER_ESS1869         44
+#define ID_OTHER_AWE32           45
+#define ID_OTHER_PCI             46
+
+#define CL_P                  <$LinkTo TEXT="/P" ID="<$ID_CL_P>">
+#define CL_I                  <$LinkTo TEXT="/I" ID="<$ID_CL_I>">
+#define CL_N                  <$LinkTo TEXT="/N" ID="<$ID_CL_N>">
+#define CL_R                  <$LinkTo TEXT="/R" ID="<$ID_CL_R>">
+#define CL_V                  <$LinkTo TEXT="/V" ID="<$ID_CL_V>">
+#define CL_OLONGNAME          <$LinkTo TEXT="/O<$Colon>LONGNAME"      ID="<$ID_CL_OLONGNAME>">
+#define CL_OQUIETINIT         <$LinkTo TEXT="/O<$Colon>QUIETINIT"     ID="<$ID_CL_OQUIETINIT>">
+#define CL_ONORMIO            <$LinkTo TEXT="/O<$Colon>NORMIO"        ID="<$ID_CL_ONORMIO>">
+#define CL_OSHAREDIO          <$LinkTo TEXT="/O<$Colon>SHAREDIO"      ID="<$ID_CL_OSHAREDIO>">
+#define CL_OMULTIIO           <$LinkTo TEXT="/O<$Colon>MULTIIO"       ID="<$ID_CL_OMULTIIO>">
+#define CL_ONORMIRQ           <$LinkTo TEXT="/O<$Colon>NORMIRQ"       ID="<$ID_CL_ONORMIRQ>">
+#define CL_OSHAREDIRQ         <$LinkTo TEXT="/O<$Colon>SHAREDIRQ"     ID="<$ID_CL_OSHAREDIRQ>">
+#define CL_OMULTIIRQ          <$LinkTo TEXT="/O<$Colon>MULTIIRQ"      ID="<$ID_CL_OMULTIIRQ>">
+#define CL_ONOCHECKIO         <$LinkTo TEXT="/O<$Colon>NOCHECKIO"     ID="<$ID_CL_ONOCHECKIO>">
+#define CL_ONOCHECKIRQ        <$LinkTo TEXT="/O<$Colon>NOCHECKIRQ"    ID="<$ID_CL_ONOCHECKIRQ>">
+#define CL_ONOTIMER0          <$LinkTo TEXT="/O<$Colon>NOTIMER0"      ID="<$ID_CL_ONOTIMER0>">
+#define CL_O10BITS            <$LinkTo TEXT="/O<$Colon>10BITS"        ID="<$ID_CL_O10BITS>">
+#define CL_O16BITS            <$LinkTo TEXT="/O<$Colon>16BITS"        ID="<$ID_CL_O16BITS>">
+#define CL_OONLYONE           <$LinkTo TEXT="/O<$Colon>ONLYONE"       ID="<$ID_CL_OONLYONE>">
+#define CL_OAUDIOVDD          <$LinkTo TEXT="/O<$Colon>AUDIOVDD"      ID="<$ID_CL_OAUDIOVDD>">
+
+#define MMID_NUMADAPT           260
+#define MMID_GENHELP            1001
+
+#define MMID_IO                 50
+#define MMID_IRQ                51
+#define MMID_NUMDEVS            52
+#define MMID_TIMER0             53
+#define MMID_IOIRQCHK           54
+#define MMID_RMIRQ              55
+#define MMID_RMIO               56
+#define MMID_RMIOWIDTH          57
+#define MMID_DOS                58
+
+#define MMS_NUMADAPT    Help for Selecting Number of Adapters
+#define MMS_GENHELP     Help for selecting MPU-401 values
+#define MMS_IO          Base I/O Address
+#define MMS_IRQ         Interrupt Level
+#define MMS_NUMDEVS     Number of devices to autodetect
+#define MMS_TIMER0      MMPM/2 TIMER0 resolution
+#define MMS_IOIRQCHK    I/O and IRQ boot-time checking
+#define MMS_RMIRQ       Resource Manager IRQ Usage
+#define MMS_RMIO        Resource Manager I/O Usage
+#define MMS_RMIOWIDTH   Resource Manager I/O address width
+#define MMS_DOS         Enable DOS hardware sharing support
+
+#define MM_NUMADAPT     <$LinkTo TEXT="<$MMS_NUMADAPT>"   ID="<$MMID_NUMADAPT>">
+#define MM_GENHELP      <$LinkTo TEXT="<$MMS_GENHELP>"    ID="<$MMID_GENHELP>">
+#define MM_IO           <$LinkTo TEXT="<$MMS_IO>"         ID="<$MMID_IO>">
+#define MM_IRQ          <$LinkTo TEXT="<$MMS_IRQ>"        ID="<$MMID_IRQ>">
+#define MM_NUMDEVS      <$LinkTo TEXT="<$MMS_NUMDEVS>"    ID="<$MMID_NUMDEVS>">
+#define MM_TIMER0       <$LinkTo TEXT="<$MMS_TIMER0>"     ID="<$MMID_TIMER0>">
+#define MM_IOIRQCHK     <$LinkTo TEXT="<$MMS_IOIRQCHK>"   ID="<$MMID_IOIRQCHK>">
+#define MM_RMIRQ        <$LinkTo TEXT="<$MMS_RMIRQ>"      ID="<$MMID_RMIRQ>">
+#define MM_RMIO         <$LinkTo TEXT="<$MMS_RMIO>"       ID="<$MMID_RMIO>">
+#define MM_RMIOWIDTH    <$LinkTo TEXT="<$MMS_RMIOWIDTH>"  ID="<$MMID_RMIOWIDTH>">
+#define MM_DOS          <$LinkTo TEXT="<$MMS_DOS>"        ID="<$MMID_DOS>">
+
+<$DocumentStart TEXT="Theta Band Software MPU-401 Install Help">
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="About Theta Band Software" ID="<$ID_ABOUT_TB>">
+<$P>
+Theta Band Software, LLC was founded in October 1997 by a team of multimedia
+and internet software experts.
+<$P>
+Theta Band Software is committed to delivering next-generation multimedia and
+internet applications and system software for personal computers.
+<$P>
+Theta Band Software products will primarily target IBM's OS/2 Warp operating
+system family, ensuring that OS/2 users will always be the first and best
+supported by our technologies and products. Versions for other platforms will
+be released with the intent of supporting our OS/2 customers.
+<$P>
+After all, we could write only Windows software, but where's the fun in that?
+<$P>
+Please visit the Theta Band Software website at <$HtmlPage PAGE="www.thetaband.com">
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="About MM Pack 1.0" ID="<$ID_ABOUT_MMPACK>">
+
+Theta Band Software proudly announces the MM Pack - a collection of
+utilities to enhance OS/2 multimedia.  But before we can tell you what the
+MMPack does, you need to know some basics about multimedia and OS/2.
+<$P>
+
+<$Bold TEXT="What is MMPM/2?">
+<$P>
+MMPM stands for "Multi Media Presentation Manager."  It's just the name of
+the multimedia subsystem of OS/2.
+<$P>
+<$Bold TEXT="What exactly is multimedia?">
+<$P>
+
+The term "multimedia" is a combination of words "multi" and "media".
+"Media" refers to things like digital audio, MIDI, or video.  Multimedia
+is the process of combining two or more of these media together, hence the
+"multi" in "multimedia".  Technically speaking, playing a wave file by
+itself is not multimedia, but playing a video file that has an audio track
+is multimedia.  However, few people recognize the distinction, so anything
+that has to do with audio or video is considered multimedia.
+<$P>
+<$Bold TEXT="What does OS/2's multimedia subsystem do?">
+<$P>
+MMPM/2 provides two core functions<$Colon>
+<$UnNumberedList>
+<$LI>Playing and recording of different types of media, like digital audio, video, and MIDI
+<$LI>Synchronization between multiple "streams" of these media, so that when you play a video, the audio track is synchronized (for example).
+<$eUnNumberedList>
+
+<$P>
+This is just what the core of MMPM/2 does.  Most of the interesting work
+is handled by a variety of "plug-ins" that allow it to understand the
+different types of media as well as the different types of hardware that
+you need in order to play or record the media.  MMPM/2 supports plug-ins
+that ...
+
+<$UnNumberedList>
+<$LI>understand the differences between file formats, such as an AVI movie vs. a QuickTime movie.  These plug-ins are called "input/output procedures", or IOProcs.
+<$LI>understand the differences between data encodings, such as the Intel Indeo AVI format vs.  the Microsoft Video for Windows AVI format.  These plug-ins are called "compressors/decompressors", or codecs.
+<$LI>understand the difference between hardware devices, such as a SoundBlaster 16 vs. an ESS 1868.  These plug-ins are called device drivers.
+<$eUnNumberedList>
+
+<$P>
+IBM provides several plug-ins with OS/2, but not enough. In addition, some
+of the existing plug-ins don't always work right, or work the way you want
+them to. For instance, we've all had problems installing device drivers,
+or maybe there's a MIDI file that works great in Windows but won't work in
+OS/2. Or maybe you'd like to be able to play two wave files at once. This
+is where our MMPack comes in.
+<$P>
+
+<$Bold TEXT="What will Theta Band Software's MMPack do for me?">
+<$P>
+The goal of the MMPack is to fill in all of these holes in MMPM/2. It is a
+collection of ioprocs, codecs, device drivers, and other utilities which
+bring out the true power of MMPM/2, and make multimedia under OS/2 more
+useful and, more importanly, more enjoyable.
+<$P>
+
+MMPack 1.0 includes the following software<$Colon>
+<$UnNumberedList>
+
+<$LI>MMCHECK - This is a utility that checks your MMPM/2 installation
+(i.e. MMPM2.INI) for errors or suspicious settings. If it finds any, it
+will tell you what they are, so that you can fix them.
+
+<$LI>MPU-401 Driver - This is a replacement for IBM's MPU-401 driver,
+which is used to MIDI support for a number of sound cards, including sound
+cards that use the Crystal Semiconductor drivers. Enhancements over IBM's
+driver include<$Colon>
+
+<$SimpleListCompact>
+<$LI>fixes for Warp 3
+<$LI>SMP compatibility
+<$LI>better hardware compatibility
+<$LI>DOS sharing
+<$LI>and more!
+<$eSimpleListCompact>
+
+<$LI>NPDSMI 2.0 - An enhancement over the free DSMI Netscape plug-in, this
+new version supports compressed (zip and gzip) module files.
+
+<$eUnNumberedList>
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="About the MPU-401 audio device driver" ID="<$ID_ABOUT_MPU>">
+
+The Theta Band Software MPU-401 audio device driver is an OS/2 device driver
+that provides MIDI playback and recording support.  It supports both MMPM/2
+and RTMIDI.
+<$P>
+This package is a replacement for the MPU-401 driver from IBM and Crystal
+Semiconductor.  It provides a complete feature superset over these two drivers.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_NUMADAPT>" ID="<$MMID_NUMADAPT>">
+
+The MMPM/2 installation procedure assumes that a device driver can only
+support one adapter or one device. Therefore, if you have more than two of
+the same adapter in your computer, you must install two copies of the
+device driver. Specifying the number of adapters in the computer is the
+same as specifying how many copies of the device driver need to be
+installed.
+<$P>
+
+The MPU-401 driver behaves somewhat differently from most audio device drivers.
+<$P>
+
+First, the driver does not support adapters per se. Rather, it supports
+MPU-401 compatible devices, and a single adapter card can have more than
+one of these devices. To the MPU-401 driver, these multiple devices will
+appear as if they exist on separate adapter cards.
+<$P>
+
+Second, a single copy of the MPU-401 driver can be configured to support
+multiple devices. This breaks the one-to-one ratio between the number of
+drivers installed and the number of physical adapters (or in this case,
+devices) in the computer.
+<$P>
+
+However, the default installation tells the MPU-401 driver to locate only
+one MPU-401 device. This maintains the one-to-one ratio that makes MMPM/2
+happy. This default is settable by the <$MM_NUMDEVS> option.
+<$P>
+
+When the base I/O address is manually selected during install (i.e. it is
+not set to "autodetect"), the driver will only support one device, and the
+<$MM_NUMDEVS> option is ignored. If you wish to manually specify the I/O
+address for more than one port, you must either install multiple copies of
+the driver, or manually add <$CL_P> switches on the command-line.
+<$P>
+
+If you select "autodetect" for the base I/O address, each copy of the
+driver, at boot time, will attempt to locate and provide support
+as many as nine MPU-401 devices (although the default behavior
+is to locate only one).  Of these, only the "first" will
+be available to MMPM/2, since MMPM/2 expects there to be only
+one MIDI device for each copy of the driver installed.  The remaining
+devices will only be visible to RTMIDI (the real-time MIDI subsystem).
+<$P>
+If you select to install zero devices, then you will remove support for
+all MPU-401 devices that have been previously installed by MMPM/2.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_GENHELP>" ID="<$MMID_GENHELP>">
+
+On this screen, you specify the values that you want to use with
+your MPU-401 Adapter.  To get help for these options, view the
+table of contents for this help panel by selecting Options->Contents,
+pressing Ctrl-C, or selecting from the list below.
+<$P>
+If you choose Close from the system menu, the selected values
+are set back to the default values.
+<$P>
+
+Select Ok to save the selected values and continue.
+<$P>
+
+<$MM_IO>        <$BR>
+<$MM_IRQ>       <$BR>
+<$MM_NUMDEVS>   <$BR>
+<$MM_TIMER0>    <$BR>
+; <$LinkTo TEXT="Long RTMIDI names" ID="30">
+; <$BR>
+<$MM_IOIRQCHK>  <$BR>
+<$MM_RMIRQ>     <$BR>
+<$MM_RMIO>      <$BR>
+<$MM_RMIOWIDTH> <$BR>
+<$MM_DOS>
+
+; <$LinkTo TEXT="Ignore MPU-401 hardware initialization errors" ID="<$MMID_DOS>">
+
+<$HeadingDown>
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_IO>" ID="<$MMID_IO>">
+
+This field allows you to select the base I/O address for the MPU-401
+device.  Specify either one of the 19 address, or select "Autodetect".
+If "Autodetect" is selected, the driver will, on every boot, search
+all 19 addresses for an MPU-401 device.  Each device found will be registered
+with RTMIDI.  The first device found will be used with MMPM/2.
+Use the <$MM_NUMDEVS> option to specify how many devices the driver should look for.
+<$P>
+
+The default is "Autodetect".  The other choices are
+330, 300, 332, 334, 336, 200, 210, 220, 230, 240, 250,
+260, 270, 310, 320, 340, 350, 360, and 370.
+<$P>
+
+If you install only one copy of the device driver (i.e. you specified
+that you have only one MPU-401 installed), then you should generally use
+Autodetect unless<$Colon>
+
+<$SimpleList>
+<$LI>The first device is not the device you want to use with MMPM/2 (applicable only if the <$MM_NUMDEVS> option is set to "All of them").
+<$LI>You know that autodetection will cause problems.
+<$LI>You are using the <$CL_ONOCHECKIO> option. A boot error will occur if
+<$CL_ONOCHECKIO> is combined with I/O autodetection, and the driver will not load.
+<$eSimpleList>
+<$P>
+
+The <$CL_ONOCHECKIO> option is specified if you select "Check only IRQ" or
+"Check neither" under the <$MM_IOIRQCHK> section.
+<$P>
+
+This settings corresponds to the <$CL_P> command-line parameter.  Base I/O
+address autodetection is enabled if there are no <$CL_P> parameters
+specified on the command-line.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_IRQ>" ID="<$MMID_IRQ>">
+
+The Interrupt Level is used for MIDI recording, which is a feature of RTMIDI.
+In order for MIDI recording to work, the driver must receive an "interrupt"
+whenever the hardware has MIDI data.
+<$P>
+
+This field allows you to select the interrupt level (IRQ) for the MPU-401 device.
+It also allows you to specify the IRQ-less option, which tells the driver to
+use TIMER0 instead of a hardware interrupt.  IRQ-less recording should only
+be used if you cannot use a normal Interrupt level.
+<$P>
+
+If the <$MM_IO> is set to Autodetect, the IRQ <$Italic TEXT="must">
+also be set to Autodetect (unless you specify IRQ-less recording).
+A boot error will occur otherwise, and the
+driver will not load.  Also, if IRQ Autodetect is selected, then the
+<$CL_ONOCHECKIRQ> flag must not be specified.  Doing so will also cause a boot error.
+<$P>
+
+IRQ autodetection is generally safe, safer than base I/O autodetection.  However,
+there can be cases when the IRQ is not detected.  If this is the case, the
+base I/O addresses and the IRQ levels can be specified.
+<$P>
+
+The default is "Autodetect".  The other choices are
+3, 4, 5, 7, 9, 10, 11, 12, 14, 15, and "None". "None" means to use IRQ-less
+recording. Note that the <$CL_ONOTIMER0> option does not affect IRQ-less recording.
+In other words, if you select "None" and <$CL_ONOTIMER0>, TIMER0 will still be used for MIDI recording.
+<$P>
+
+The <$CL_ONOCHECKIRQ> option is specified if you select "Check only I/O" or
+"Check neither" under the <$MM_IOIRQCHK> section.
+<$P>
+
+This settings corresponds to the <$CL_I> command-line parameter.  IRQ autodetection is
+enabled if there are no <$CL_I> parameters specified on the command-line.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_NUMDEVS>" ID="<$MMID_NUMDEVS>">
+
+This setting is ignored if
+<$LinkTo TEXT="I/O port autodetection" ID="<$MMID_IO>">
+is not enabled.
+<$P>
+When this setting is set to the default of "Only One", the driver will
+stop searching after it has found one MPU-401 device.  This allows
+the autodetection routine to conform to MMPM/2's requirement that each
+copy of the driver represents only one device.
+<$P>
+For example, say that there are three MPU-401 devices in the computer.
+To get MMPM/2 to recognize all of them, three copies of the driver would
+need to be loaded.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_TIMER0>" ID="<$MMID_TIMER0>">
+
+The MPU-401 driver uses the UART (a.k.a. dumb) mode of the MPU-401
+interface, which is the only mode that the majority of audio cards support.
+This mode does not provide timing services, which are needed by an MMPM/2
+MIDI driver for MIDI playback.  Therefore, the MPU-401 driver uses the
+high-resolution timer driver, TIMER0.SYS, for timing purposes.  If
+necessary, the MPU-401 driver can use the system timer, but the timing
+accuracy may not be acceptable.
+<$P>
+
+MMPM/2 relies on the device drivers for timing information, so this setting
+affects MIDI playback <$Italic TEXT="through MMPM/2 only">. RTMIDI, on the other
+hand,  performs all timing internally,
+so if you do not plan to use this driver with MMPM/2, then this setting should
+be set to "Never use TIMER0".
+<$P>
+
+This setting allows the user to specify if TIMER0.SYS should be used,
+and if so, at what resolution.  A higher resolution means less time
+passes between ticks.  The higher the resolution, the more accurate
+the playback will be, but the more demanding this driver will be on
+system resources.  The default value of 2 milliseconds provides excellent
+resolution without noticeable load under normal circumstances.  1ms
+is generally too fast, and should only be used on very fast computers
+if necessary.
+<$P>
+
+If "Never use TIMER0" is specified, then the MPU-401 driver will use
+the system timer, which runs at 31.25 milliseconds (32 ticks per second).
+If "Never use TIMER0" is not specified, then the driver will use TIMER0.SYS
+if it is available.  If it is not, it will switch to the system timer
+automatically.
+<$P>
+
+This settings corresponds to the <$CL_R> command-line parameter.
+
+; --------------------------------------------------------------------------
+; <$Heading TEXT="Long RTMIDI names" ID="30">
+; When a Type A device driver (such as the MPU-401 driver) registers with
+; RTMIDI, it must provide a unique name for each of its devices.  This
+; setting controls how that name will appear.  These names will appear
+; as the names of the corresponding hardware nodes.
+; <$P>
+; There are two options for RTMIDI names<$Colon> short and long.  Short names
+; look like this<$Colon>
+; <$SimpleListCompact>
+; <$LI>MPU-401 #1
+; <$LI>MPU-401 #2
+; <$LI>MPU-401 #3
+; <$eSimpleListCompact>
+; <$P>
+; and so on.  Long names replace the counter with the base I/O address
+; and interrupt level (IRQ).  For example<$Colon>
+; <$SimpleListCompact>
+; <$LI>MPU-401 (I/O=0330, IRQ=05)
+; <$LI>MPU-401 (I/O=0300, IRQ=10)
+; <$LI>MPU-401 (I/O=0260, IRQ=09)
+; <$eSimpleListCompact>
+; <$P>
+; The default is to use long RTMIDI names.
+; <$P>
+; If you have more than one copy of the MPU-401 driver loaded, long RTMIDI
+; names are required.  Otherwise, each copy of the driver
+; will attempt to register "MPU-401 #1" for its first device.
+; <$P>
+; This settings corresponds to the
+; <$CL_OLONGNAME> command-line parameter.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_IOIRQCHK>" ID="<$MMID_IOIRQCHK>">
+
+By default, the MPU-401 drivers checks for the existance of MPU-401 hardware
+at each boot.  With certain sound cards, such as those that use a DOS application
+to initialize the board, the hardware is not visible until after the driver
+has loaded.  This option allows you to specify if the driver should check for
+actual hardware at boot time, or if it should simple assume that the hardware
+is there.
+<$P>
+
+The options are to check both the base I/O address and the IRQ, to check
+only the base I/O address, or to check neither.  Since a base I/O address
+is needed to check for an IRQ, it is not possible to check for an IRQ but
+not a base I/O address.
+<$P>
+
+If I/O autodetection is enabled, then I/O checking must also be enabled.
+Similarly, if IRQ autodetection is enabled, IRQ checking must
+also be enabled.  A boot error will occur if these requirements are not
+met, and the driver will not load.
+<$P>
+
+Note that if IRQ checking is disabled, and the IRQ is
+not specified, then there will be no IRQ assigned to the MPU-401 device,
+and MIDI recording will not be possible.
+<$P>
+
+This settings corresponds to the <$CL_ONOCHECKIO> and <$CL_ONOCHECKIRQ> command-line parameters.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_RMIRQ>" ID="<$MMID_RMIRQ>">
+
+Resource Manager (RM) is a subsytem which allows device drivers to register
+which hardware resources (I/O addresses, IRQs, DMA channels, etc) are
+used and how they are used.  This setting controls if and how the MPU-401
+driver registers the IRQs it uses.
+<$P>
+
+Normally, a device driver would first ask RM if any of the resources it
+plans to use are already allocated by another driver.  The allocated
+resources are then marked as unavailable, and if there are not enough
+remaining resources, or if the hardware cannot be found at these resources,
+the driver terminates with an error message.  Otherwise, the driver
+claims the resources it needs and reports them to RM, so that the next
+device driver won't touch them.  The reasoning behind this process is
+that only one device driver interacts with a particular resource.
+<$P>
+
+The MPU-401 driver is different from other drivers in that it can be
+used in conjunction with other drivers to communicate to the same hardware.
+Although this works in theory, in practice there can be conflicts.
+Caveat emptor.  See the section titled
+<$LinkTo TEXT="Using the MPU-401 driver with other audio device drivers" ID="<$ID_OTHER_DRIVERS>">
+for more information.
+<$P>
+
+By default, the MPU-401 driver asks RM if a resource is available before
+it touches it, and for each resource it finds, it makes an exclusive claim
+with RM for that resource.  This behavior will generally prevent the driver from working
+with other device drivers.  Note that the intent behind RM is to
+prevent multiple device drivers from talking to the same hardware, so
+by circumventing the MPU-401 driver's RM checks, you are also
+circumventing the protection that RM provides.
+<$P>
+
+To completely bypass RM, select the "None" option.  Alternatively, the
+driver can still interact with RM, but on a level more relaxed than
+"Exclusive".  "Shared" means that two drivers can use the same resource
+simultaneously.  "Multiplexed" means that the two drivers have a private
+interface where they switch-off access to the resource.  Note that the
+MPU-401 driver has no such private interfaces, so the use of "Shared"
+or "Multiplexed" should be chosen based on which interacts better with
+the competing device driver.
+<$P>
+
+This settings corresponds to the <$CL_OSHAREDIRQ>, <$CL_OMULTIIRQ>, and <$CL_ONORMIRQ> command-line parameters.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_RMIO>" ID="<$MMID_RMIO>">
+
+See the discussion on <$MM_RMIRQ> for an explanation of Resource Manager.
+This setting is like the RM IRQ usage setting, but it applies to I/O addresses instead.
+<$P>
+
+This settings corresponds to the <$CL_OSHAREDIO>, <$CL_OMULTIIO>, and <$CL_ONORMIO> command-line parameters.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_RMIOWIDTH>" ID="<$MMID_RMIOWIDTH>">
+
+An I/O address is a 16-bit quantity, so there can be 65,536 of them.
+However, most devices only check (decode) the lower 10 bits of the address,
+thereby ignoring the upper 6 bits and making all addresses which have
+the lower 10 bits in common behave as if they were identical.
+<$P>
+
+For instance, consider such a device configured to use I/O address
+0x330 (0000 0011 0011 0000 in binary).  Any I/O operations to address 0x330
+will go to this device.  However, since it only decodes the lower
+10 bits, I/O operations to address 0x1330 (0000 0111 0011 0000)
+will also go to this device.
+Same for 0x2330, 0x3330, 0x4330, and so on.  So to properly avoid
+conflicts with other devices, the driver would have to register all
+64 variations of 0x330.
+<$P>
+
+RM has provisions to handle such devices.  When an I/O address is
+registered with RM, the address width (number of significant bits)
+is also included.  So if a 10-bit device registers address 0x330, a
+16-bit device cannot register address 0x1330 later.  Note that a
+10-bit device cannot register 0x1330 ever, because 0x1330 has
+11 significant bits.
+<$P>
+
+The default address width depends on whether the computer uses the
+ISA (Industry Standard Architecture) system bus or the MCA
+(MicroChannel Architecture).  Almost every ISA device decodes only
+10 bits, but almost every MCA card decodes all 16.  So on an
+ISA computer, the default address with is 10 bits, and on an MCA
+computer, the default width is 16 bits.
+<$P>
+
+This setting allows you to change the address with for all devices.
+Note that you cannot specify the address width for each device.
+If you have a combination of 10-bit and 16-bit MPU-401 devices in
+your computer, you will need to load two copies of the driver,
+one for all 10-bit devices, and the other for all 16-bit devices.
+<$P>
+
+This settings corresponds to the <$CL_O10BITS> and <$CL_O16BITS> command-line parameters.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="<$MMS_DOS>" ID="<$MMID_DOS>">
+
+Tells the driver to attempt sharing the hardware resources (I/O ports and
+IRQs) with DOS and Windows MIDI applications.
+<$P>
+
+This option corresponds to the <$CL_OAUDIOVDD> parameter.  More information is available there.
+
+; --------------------------------------------------------------------------
+; <$Heading TEXT="Ignore MPU-401 hardware initialization errors" ID="<$MMID_DOS>">
+; In some cases, a particulat MPU-401 device will return an error code
+; during hardware initialization even though the hardware is properly
+; initialized.  By selecting Yes to this setting, the driver will
+; initialize the hardware when needed, but it will not report any
+; errors to MMPM/2 or RTMIDI.
+; <$P>
+; This settings corresponds to the <$CL_OQUIETINIT> command-line parameter.
+
+; --------------------------------------------------------------------------
+<$HeadingUp>
+<$Heading TEXT="Command-line Parameters" ID="<$ID_CMD_LINE>">
+
+This section describes all of the possible command-line parameters
+for the MPU-401 driver.  The installation procedure allows you to
+specify most of these options.  Manual customization of the command-line
+may be necessary for some features.
+<$P>
+
+Parameters are separated by one or more blank spaces.
+They are all in the form of /X[n][<$Colon>qualifier]
+<$P>
+
+where
+<$SimpleListCompact>
+<$LI>/ is a required forward-slash that precedes each parameter
+<$LI>X is the parameter itself, a single letter of the Roman alphabet
+<$LI>[n] is the port number, an decimal digit between 1 and 9 required by some parameters
+<$LI>[<$Colon>qualifier] is the qualifier for the parameter, a string or number required for some parameters
+<$eSimpleListCompact>
+<$P>
+
+Parameters that require port numbers are used to specify a setting
+for a particular MPU-401 device.  Remember, the MPU-401 driver
+supports up to nine independent MPU-401 devices.
+<$P>
+
+The interpretation if the qualifier depends on the parameter.  For
+example, the <$CL_N> parameter interprets the qualifier as an ASCII
+string, the <$CL_P> parameter interprets it as a hexadecimal number, and
+the <$CL_I> parameter interprets it as a decimal number.
+<$P>
+
+This list shows what each of the symbols mean<$Colon>
+
+<$SimpleListCompact>
+<$LI>n is a decimal digit from 1 to 9 indicating the port number
+<$LI>ddd is a decimal number greater than zero
+<$LI>hhh is a hexadecimal number greater than zero
+<$LI>sss is an ASCII string
+<$eSimpleListCompact>
+<$P>
+
+Here is the list of all command-line parameters<$Colon>
+<$P>
+
+<$CL_P><$BR>
+<$CL_I><$BR>
+<$CL_N><$BR>
+<$CL_R><$BR>
+<$CL_V><$BR>
+<$CL_OLONGNAME><$BR>
+<$CL_OQUIETINIT><$BR>
+<$CL_ONORMIO><$BR>
+<$CL_OSHAREDIO><$BR>
+<$CL_OMULTIIO><$BR>
+<$CL_ONORMIRQ><$BR>
+<$CL_OSHAREDIRQ><$BR>
+<$CL_OMULTIIRQ><$BR>
+<$CL_ONOCHECKIO><$BR>
+<$CL_ONOCHECKIRQ><$BR>
+<$CL_ONOTIMER0><$BR>
+<$CL_O10BITS><$BR>
+<$CL_O16BITS><$BR>
+<$CL_OONLYONE><$BR>
+<$CL_OAUDIOVDD>
+
+<$HeadingDown>
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/Pn<$Colon>hhh - Base I/O (Port) Address" ID="<$ID_CL_P>">
+
+This parameter specifies the base I/O address for given port.  For
+example, /P5<$Colon>208 says that device #5 is located at I/O address 208
+hexadecimal.
+<$P>
+
+This parameter can be set with the <$MM_IO> option.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/In<$Colon>ddd - Interrupt Level" ID="<$ID_CL_I>">
+
+This parameter specifies the IRQ level for the given port.  The IRQ level
+must be between 1 and 15.  For example, /I2<$Colon>10 says that device <?Hash>2 uses IRQ level 10 decimal.
+<$P>
+
+This parameter also specifies the IRQ-less MIDI recording option. To select
+IRQ-less recording, set the IRQ level to 0. For example, /I2<$Colon>0 says
+that device #2 should use TIMER0 for recording.
+<$P>
+
+This parameter can be set with the <$MM_IRQ> option.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/N<$Colon>sss - Device Driver Name" ID="<$ID_CL_N>">
+<$P>
+This parameter takes a string, up to 7 characters in length and
+terminated by a $ (for a maximum of 8 characters including the $).
+The default is "MPU401$".  If you install more than one copy of MPU401.SYS,
+each one must have a different name.  MINSTALL takes care of this
+for you.
+<$P>
+
+This parameter cannot be set by any option.  To change the default
+value, CONFIG.SYS must be manually edited.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/R<$Colon>ddd - TIMER0 Resolution" ID="<$ID_CL_R>">
+
+Resolution of MMPM/2 timing.  If the high resolution timer
+(TIMER0.SYS) is installed, this parameter tells the MPU-401
+driver what resolution to use (where yyy is the number of
+milliseconds) when playing MMPM/2 MIDI streams.  Default is
+two milliseconds.
+<$P>
+
+This parameter can be set with the <$MM_TIMER0> option.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/V - Display Boot Messages (Verbose)" ID="<$ID_CL_V>">
+
+Verbose output during boot.  If used, this should be the
+first parameter and will cause informational messages to appear
+when the driver is loaded.  Such information includes the the I/O addresses
+and IRQs used and the timing resolution.
+<$P>
+
+This parameter cannot be set by any option.  To change the default
+value, CONFIG.SYS must be manually edited.
+
+; --------------------------------------------------------------------------
+<$Heading TEXT="/O<$Colon>sss - Options" ID="<$ID_CL_O>">
+<$P>
+These options enable or disable certain features of the MPU-401 driver.
+The following sections list the possible values for sss and their
+meanings.
+
+<$HeadingDown>
+<$Heading TEXT="LONGNAME - Long RTMIDI Names" ID="<$ID_CL_OLONGNAME>">
+<$P>
+Long name support.  If specified, /L directs the driver to
+include the base I/O address and the IRQ in the instance name
+for RTMIDI Type A registration.  For example, without /L the
+instance name might be "MPU-401 #1".  With /L, it would look
+like "MPU-401 #1 (I/O=0330, IRQ=05)".  This option, like the /N option,
+must be specified if more than one copy of MPU401.SYS is loaded.
+; <$P>
+; This parameter can be set with the
+; <$LinkTo TEXT="Long RTMIDI names" ID="30"> option.
+
+<$Heading TEXT="QUIETINIT - Ignore Initialization Errors" ID="<$ID_CL_OQUIETINIT>">
+<$P>
+Tells the driver to ignore errors when an OS/2 MMPM/2 application wants to play
+a MIDI file. This option may be necessary for some audio adapters.
+; <$P>
+; This parameter can be set with the
+; <$LinkTo TEXT="Ignore MPU-401 hardware initialization errors" ID="<$MMID_DOS>">
+; option.
+
+<$Heading TEXT="NORMIO - Do not check/register I/O addresses with RM" ID="<$ID_CL_ONORMIO>">
+
+Tells the driver not to check or claim I/O address with the
+Resource Manager.
+<$P>
+This parameter can be set with the
+<$MM_RMIO> option.
+
+<$Heading TEXT="SHAREDIO - Check/register I/O addresses as Shared" ID="<$ID_CL_OSHAREDIO>">
+
+Tells that driver to use the Shared attribute when checking
+and claiming I/O addresses with the Resource Manager.
+<$P>
+This parameter can be set with the
+<$MM_RMIO> option.
+
+<$Heading TEXT="MULTIIO - Check/register I/O addresses as Multiplexed" ID="<$ID_CL_OMULTIIO>">
+
+Tells that driver to use the Multiplexed attribute when
+checking and claiming I/O addresses with the Resource
+Manager.  Frequently used when the MPU-401 driver shares
+the same hardware with another driver, such as SB16D2.SYS.
+<$P>
+This parameter can be set with the
+<$MM_RMIO> option.
+
+<$Heading TEXT="NORMIRQ - Do not check/register IRQs with RM" ID="<$ID_CL_ONORMIRQ>">
+
+Tells the driver not to check or claim IRQs with the
+Resource Manager.
+<$P>
+This parameter can be set with the
+<$MM_RMIRQ> option.
+
+<$Heading TEXT="SHAREDIRQ - Check/register IRQs as Shared" ID="<$ID_CL_OSHAREDIRQ>">
+
+Tells that driver to use the Shared attribute when checking
+and claiming IRQs with the Resource Manager.
+<$P>
+This parameter can be set with the
+<$MM_RMIRQ> option.
+
+<$Heading TEXT="MULTIIRQ - Check/register IRQs as Multiplexed" ID="<$ID_CL_OMULTIIRQ>">
+
+Check/register IRQs as Multiplexed.
+Tells that driver to use the Multiplexed attribute when
+checking and claiming IRQs with the Resource Manager.
+<$P>
+This parameter can be set with the
+<$MM_RMIRQ> option.
+
+<$Heading TEXT="NOCHECKIO - Do not verify I/O addresses" ID="<$ID_CL_ONOCHECKIO>">
+
+Tells the driver not to verify whether an MPU-401 device
+exists at the I/O addresses specified by the
+<$CL_P> switches.
+Use this option when the sound card is initialized after
+the driver is loaded, e.g. by a DOS application.  When
+this option is specified, the <$CL_ONOCHECKIRQ> option is implied.
+<$P>
+Understand that this parameter tells the driver not to check whether
+the specified I/O port exists or whether the hardware at that I/O port
+is functioning. Therefore, it is your responsibility to make sure that
+the I/O port specified with the
+<$CL_P>
+option is correct and that the hardware is functioning. Otherwise,
+when an application attempts to use the hardware, it will receive
+an error message.
+<$P>
+If you want the MPU-401 driver to also ignore the hardware when an application
+requests it, specify the
+<$CL_OQUIETINIT>
+option.
+<$P>
+This parameter can be set with the
+<$MM_IOIRQCHK> option.
+
+<$Heading TEXT="NOCHECKIRQ - Do not verify IRQs" ID="<$ID_CL_ONOCHECKIRQ>">
+
+Same as the <$CL_ONOCHECKIO> option, except it applies to the IRQ level.
+<$P>
+Understand that this parameter tells the driver not to check whether
+the specified IRQ exists or whether the hardware at that IRQ
+is functioning. Therefore, it is your responsibility to make sure that
+the IRQ specified with the
+<$CL_I>
+option is correct and that the hardware is functioning. Otherwise,
+when an application attempts to use the hardware (i.e. an RTMIDI
+application that wants to record MIDI), it will receive
+an error message.
+<$P>
+This parameter can be set with the
+<$MM_IOIRQCHK> option.
+
+<$Heading TEXT="NOTIMER0 - Do not use TIMER0" ID="<$ID_CL_ONOTIMER0>">
+
+Do not use TIMER0 even it is available.
+<$P>
+This parameter can be set with the
+<$MM_TIMER0> option.
+
+<$Heading TEXT="10BITS - Use 10-bit address width with RM" ID="<$ID_CL_O10BITS>">
+
+Always register each I/O address as having only 10 significant bits.
+If this option is selected, no I/O address can be greater than
+0x3FF.
+See the section titled Resource Manager I/O address width
+for a detailed explanation.
+<$P>
+This parameter can be set with the
+<$MM_RMIOWIDTH> option.
+
+<$Heading TEXT="16BITS - Use 16-bit address width with RM" ID="<$ID_CL_O16BITS>">
+
+Always register each I/O address as having the full 16 significant bits.
+See the section titled Resource Manager I/O address width
+for a detailed explanation.
+<$P>
+This parameter can be set with the
+<$MM_RMIOWIDTH> option.
+
+<$Heading TEXT="ONLYONE - Locate only one MPU-401 device" ID="<$ID_CL_OONLYONE>">
+
+Ignored unless I/O port autodetection is used.
+When specified, the autodetection routine stops after finding the 1st
+MPU-401 device.
+<$P>
+This parameter can be set with the
+<$MM_NUMDEVS> option.
+
+<$Heading TEXT="AUDIOVDD - Enable DOS sharing" ID="<$ID_CL_OAUDIOVDD>">
+
+When DOS sharing is enabled, DOS applications which use the MPU-401
+hardware will not interfere with OS/2 MIDI applications, and vice versa.
+DOS sharing support is provided by the virtual device driver, VMPU401.SYS.
+<$P>
+If an OS/2 application is using the MIDI hardware (e.g. playing a MIDI
+file), and a DOS application is started which attempts to use the same
+hardware (e.g. a DOS or Windows MIDI sequencer), OS/2 will display a
+warning message giving you the option to terminate the DOS application
+or hide the hardware from the DOS application.
+<$P>
+If a DOS application is using the MIDI hardware, and an OS/2 application
+is started which also tries the use the same hardware, the OS/2 application
+will receive an error message that the hardware is in use.
+<$P>
+When <$CL_OAUDIOVDD> is specified, only those resources which are
+marked as "exclusive" (with the Resource Manager) are actually protected in
+this manner.  Also, the support for DOS sharing is currently rather primitive.
+First, only one IRQ is protected - if one instance of the MPU-401 driver
+controls multiple MPU-401 devices, only the IRQ for the first device is
+protected.  Second, the protection is global for all devices per driver -
+if one instance of the MPU-401 driver controls multiple MPU-401 devices,
+then all resources across all devices are protected globally, which means
+you cannot use an OS/2 MIDI application with one MPU-401 device and a DOS MIDI
+application with another.
+<$P>
+All of these limitations are expected to be removed in the next version of
+the driver.
+
+; --------------------------------------------------------------------------
+<$HeadingUp>
+<$HeadingUp>
+<$Heading TEXT="Using the MPU-401 driver with other audio device drivers" ID="<$ID_OTHER_DRIVERS>">
+
+The MPU-401 driver has been designed to allow co-exist with
+other audio drivers.  However, when using the MPU-401 driver in
+this way, you will effictively have two device drivers that do
+not communicate with each other sharing the same hardware.  This
+combination can cause odd, unpredicable behavior that can vary
+from driver to driver and even from version to version.
+<$P>
+The other audio device driver, hereby known as the main driver,
+typically controls an entire adapter, and the MPU-401 driver
+only talks to the MPU-401 hardware on that adapter.  In some
+cases, the main driver also talks to the MPU-401 hardware.
+<$P>
+In particular, there are two problems that occur most frequently<$Colon>
+<$OrdList>
+<$LI>The main driver controls the audio mixer, and can mute the
+wavetable synthesizer on the adapter.  The audio mixer controls
+the volume levels of each of the devices, such as the
+wavetable synthesizer, on the audio adapter.
+The MPU-401 device on an audio adapter typically controls
+the wavetable synthesizer.  The
+MPU-401 driver can only control the MPU-401 device on the adapter,
+and the audio mixer cannot be controlled by the MPU-401 device.
+<$LI>The main driver can reset the MPU-401 device for an unrelated
+reason (such as when initializing the wave audio device), and thus
+preventing simultaneous use of the wave audio device and the MPU-401
+device (i.e. you will not be able to get digital audio and MIDI at the
+same time).
+<$eOrdList>
+<$P>
+The default options for the MPU-401 driver will usually prevent
+the MPU-401 driver from co-existing with other drivers.  This is
+because the MPU-401 driver registers its resource with Resource Manager
+in "exclusive" mode, and this usually conflicts with the main driver.
+If this is the case, three things must be done<$Colon>
+<$OrdListCompact>
+<$LI>Determine whether the conflict is with the I/O ports, the IRQ, or both.
+<$LI>Determine how the main driver registers the resource with RM<$Colon> shared, multiplexed, or exclusive.
+<$LI>Use the chart below to determine how to set the MPU-401 driver
+<$eOrdListCompact>
+
+<$Table BORDER WIDTHS='30 40'>
+<$TR>
+<$TC><$Bold TEXT="Main driver is set to<$Colon>"><$eTC>
+<$TC><$Bold TEXT="Set MPU-401 driver to<$Colon>"><$eTC>
+<$eTR>
+<$TR>
+<$TC>Shared<$eTC>
+<$TC>Shared<$eTC>
+<$eTR><$TR>
+<$TC>Multiplexed<$eTC>
+<$TC>Multiplexed<$eTC>
+<$eTR><$TR>
+<$TC>Exclusive<$eTC>
+<$TC>None<$eTC>
+<$eTR>
+<$eTable>
+
+<$P>
+For example, if the main driver registers its I/O ports in exclusive
+mode and its IRQs in multiplexed mode (a common configuration),
+the MPU-401 driver should set <$MM_RMIO> to "None" and <$MM_RMIRQ>
+to "Multiplexed".
+
+<$HeadingDown>
+<$Heading TEXT="Creative Labs SoundBlaster Pro (TM) and compatibles" ID="<$ID_OTHER_SBPRO>">
+
+If your soundcard is a SoundBlaster Pro or 100% compatible, then
+it is incompatible with the MPU-401 driver.  The SB Pro does not contain
+any MPU-401 hardware, and so there is nothing for the MPU-401 driver
+to talk to.  The SB Pro is a very old card that lacks many features
+of modern sound cards.  For instance, it also does not support 16-bit
+audio.
+<$P>
+
+Note that many modern sound cards include SB Pro compatibility, but
+can also do much more.  Many of these cards also include real MPU-401
+hardware, so the MPU-401 driver will work with these cards.  But if your
+sound card supports only the SB Pro standard, then it will not work
+with the MPU-401 driver.
+
+<$Heading TEXT="Creative Labs Soundblater 16 PnP ISA card" ID="<$ID_OTHER_SB16>">
+
+Reports of success with this card vary.  Generally, IRQ-based MIDI recording
+will not work, but IRQ-less recording does work for some people.
+; Gunter Hahn gunter.hahn@t-online.de
+<$P>One person uses the SB16D2.SYS driver dated Jan 1 1997 (69,670 bytes).
+The command-line options used are "P1<$Colon>330 /I1<$Colon>0 <$CL_ONORMIO>",
+but MIDI recording does not work with this card.
+
+<$Heading TEXT="Terratec Maestro-32 with Yamaha DB50XG daughter board" ID="<$ID_OTHER_TERRATEC>">
+
+; Ernst Fueloep fueloep@at.ibm.com
+One person is using this board with the Crystal Semiconductor 1.75
+reference drivers and these parameters<$Colon>
+<$P>
+
+/P1<$Colon>330 /I1<$Colon>7 <$CL_OLONGNAME> <$CL_ONOCHECKIRQ> <$CL_O16BITS>
+$<P>
+
+It is unknown
+why the <$CL_ONOCHECKIRQ> parameter is required. The system is an IBM Server 330
+with known BIOS problems, so that may be the cause.  Hardware detection
+(Warp 4) needs to be disabled for the driver to find the board.
+Other than that, all features appear to work.
+
+<$Heading TEXT="Sound cards using the ESS 1869 chip" ID="<$ID_OTHER_ESS1869>">
+
+The ESS 1869 hardware is not capable of MIDI input, so MIDI recording
+will not work with any sound card that uses this chip.
+<$P>
+
+Therefore, do not specify an IRQ.  The driver will attempt to locate an IRQ,
+and when it can't find one, it will simply ignore it.  Do not use IRQ-less
+recording, as this will not work.
+
+<$Heading TEXT="Creative Labs SoundBlaster AWE 32" ID="<$ID_OTHER_AWE32>">
+
+The AWE 32 has both an internal wavetable synthizer (for MIDI music) and
+MPU-401 hardware compatibility.  However, the two are not connected.  The
+MPU-401 hardware can communicate only with the MIDI connector on the back
+of the card, so the MPU-401 driver can only work with external MIDI
+devices, not the internal synthesizer.
+<$P>
+
+At this time, there are no confirmable reports as to how to get the
+MPU-401 driver working with the AWE 32.
+
+<$Heading TEXT="PCI audio devices" ID="<$ID_OTHER_PCI>">
+
+To our knowledge, there are no PCI audio devices which are compatible with the MPU-401 driver.
+
+; --------------------------------------------------------------------------
+<$HeadingUp>
+<$Heading TEXT="Win-OS/2 support" ID="<$ID_WINOS2>">
+
+You should be able to install the Windows MPU-401 driver without any difficulty.  Note that the Windows MPU-401 driver only supports the following I/O ports
+
+<$UnNumberedListCompact>
+<$LI>300
+<$LI>320
+<$LI>330
+<$LI>332
+<$LI>334
+<$LI>336
+<$eUnNumberedList>
+<$P>
+and IRQs
+<$UnNumberedListCompact>
+<$LI>3
+<$LI>4
+<$LI>5
+<$LI>6
+<$LI>7
+<$LI>9 (same as 2)
+<$eUnNumberedList>
+<$P>
+
+You must make sure that your MPU-401 hardware is configured for these settings before you try to install the Windows MPU-401 driver.
+<$P>
+
+Follow these steps to install the Windows MPU-401 driver<$Colon>
+
+<$OrdList>
+<$LI>Start Win-OS/2, either Full Screen <$Bitmap "win_fs"> or Window <$Bitmap "win_win">
+<$LI>In the Program Manager, open the "WIN-OS/2 Main" group. From there, launch the Control Panel <$Bitmap "ctrlpanl">
+<$LI>Launch the Drivers control panel <$Bitmap "drivers">
+<$LI>A dialog box appears, with a list titled "Installed Drivers".  If there is an entry titled "Roland MPU-401", then select it, click on the button "Setup", and jump to step 7.
+<$LI>Click on the button "Add"
+<$LI>In the list titled "List of Drivers", select "Roland MPU-401" and click on "OK". If it asks whether you want to use the current driver or a new driver, click on "Current".
+<$LI>A dialog box labelled "MPU-401 Compatible Setup" appears. Select the Port and Interrupt (IRQ) that corresponds to the MPU-401 hardware, and click on "OK".
+<$LI>A dialog box will appear asking if you want to restart Win-OS/2. Click on the button "Restart Now".  Win-OS/2 will terminate.
+<$LI>Launch Win-OS/2 again
+<$LI>Launch the Control Panel again, and then launch the MIDI Mapper <$Bitmap "mapper">
+<$LI>In the area labelled "Name", select "MPU-401" if it isn't already selected. To see all the selections, click on the small down arrow next to the "Help" button.
+<$LI>Click on the button "Close".  Then close the Control Panel window.
+<$eOrdList>
+<$P>
+
+To play a MIDI file in Windows, do the following<$Colon>
+
+<$OrdList>
+<$LI>In the Win-OS/2 Program Manager, inside the "Win-OS/2 Accessories" group, is an icon for the "Media Player" <$Bitmap "mplayer">. Launch it.
+<$LI>Select the menu item Device->MIDI Sequencer.
+<$LI>Select a MIDI file to play.
+<$LI>Click on the play button.
+<$eOrdList>
+
+<$DocumentEnd>
+

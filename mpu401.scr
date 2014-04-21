@@ -1,0 +1,17 @@
+/* MPU401.SCR
+   Filelist control file for Theta Band Software MPU-401 Driver
+   See control.scr for directory mappings
+*/
+
+/*  Total Number of Files to copy                                          */
+    6
+
+/* Disk# Group# Dest# Source# Filename         Comment                     */
+
+    0      1      2      0    "mpu401.dll"      /* Resource DLL            */
+    0      1      7      0    "mpu401.hlp"      /* Help file               */
+    0      1      0      0    "mpu401.sys"      /* Device driver           */
+    0      1      2      0    "cardinfo.dll"    /* MINSTALL Resource DLL   */
+    0      1      0      0    "vmpu401.sys"     /* Virtual Device Driver   */
+    0      1      0      0    "mpu401.inf"      /* Online manual           */
+

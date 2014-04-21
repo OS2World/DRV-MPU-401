@@ -1,0 +1,146 @@
+RCDATA 1
+BEGIN
+   "1"                          /* Number of adapters in this rc file      */
+END
+
+RCDATA 10
+BEGIN
+   "1",                         /* ID number of this adapter                */
+   ""                           /* Type of adapter - use audiovdd if        */
+                                /* you use the IBM audiovdd.sys driver      */
+END
+
+RCDATA 11
+BEGIN
+   "6",                        /* Max number of adapters (2 chars)           */
+   "mpu401.hlp",               /* Helpfile name (19 chars)                   */
+   "\0",                       /* Adapter specific dll name (19 chars)       */
+   "\0",                       /* Adapter specific dll entry point (39 chars)*/
+
+   /**** Data for CONFIG.SYS **/
+   "2",                        /* Number of CONFIG.SYS lines (1 char)        */
+   "DEVICE=*PATH*\\MPU401.SYS *VAL**VAL**VAL**VAL**VAL**VAL**VAL**VAL**VAL*/O:LONGNAME /N:*PDD*",
+   "DEVICE=*PATH*\\VMPU401.SYS *PDD*",
+
+   /**** Data for INI File ****/
+   "2",                        /* Number of Drivers to Install (1 char)      */
+   "MPU-401",                  /* Product name (39 chars)                    */
+   "2.0.0"                     /* Version of the adapter's software (5 chars)*/
+   "MPU401",                   /* PDD Name  (6 chars)                        */
+   "MDM",                      /* MCD table name (19 chars)                  */
+   "\0"                        /* VSD table name (19 chars)                  */
+END
+
+RCDATA 12
+BEGIN
+   /**** SEQUENCER Driver ****/
+   "IBMSEQMPU401"              /* Installname (17 chars)                     */
+   "8",                        /* Device type (3 chars)                      */
+   "1",                        /* Device flag (3 chars)                      */
+   "MIDIMCD",                  /* MCD driver name (19 chars)                 */
+   "AUDIOIF",                  /* VSD driver name (19 chars)                 */
+   "3",                        /* Share Type (3 chars)                       */
+   "MPU-401SEQ",               /* Resource name (17 chars)                   */
+   "1",                        /* # of Resource units (2 chars)              */
+   "1",                        /* # of Resource classes (2 chars)            */
+   "1",                        /* Resource classes (2 char each)             */
+   "0",                        /* # Valid resource class combos (2 chars)    */
+                               /* Valid resource class combos (2 chars each) */
+   "1",                        /* # of connectors (2 chars)                  */
+   "1","IBMAMPMIXMPU401","1",  /* Connectors (2 chars), (17 chars), (2 chars)*/
+   "1",                        /* # of extensions (2 chars)                  */
+   "MID",                      /* Extension names (3 chars each)             */
+   "MIDI",                     /* Extended attribute (255 chars)             */
+   "MIDI",                     /* Alias Name (17 chars)                      */
+   "CHANNELS=1111111111111111,MIDITYPE=General MIDI"
+                               /* Device Parms (255 chars)                   */
+END
+
+RCDATA 13
+BEGIN
+   /**** AMPMIXER Driver *****/
+   "IBMAMPMIXMPU401"           /* Installname (17 chars)                     */
+   "9",                        /* Device type (3 chars)                      */
+   "2",                        /* Device flag (3 chars)                      */
+   "AMPMXMCD",                 /* MCD driver name (19 chars)                 */
+   "AUDIOIF",                  /* VSD driver name (19 chars)                 */
+   "3",                        /* Share Type (3 chars)                       */
+   "MPU-401AMPMIX",            /* Resource name (17 chars)                   */
+   "1",                        /* # of Resource units (2 chars)              */
+   "1",                        /* # of Resource classes (2 chars)            */
+   "1",                        /* Resource classes (2 char each)             */
+   "0",                        /* # Valid resource class combos (2 chars)    */
+   "2",                        /* # of connectors (2 chars)                  */
+   "4", "\0", "0",             /* Connectors (2 chars), (17 chars), (2 chars)*/
+   "14", "\0", "0",
+   "0",                        /* # of extensions  (2 chars)                 */
+   /* no extension names */    /* Extension names  (3 chars each)            */
+   "\0",                       /* Extended attribute (255 chars)             */
+   "\0",                       /* Alias Name (17 chars)                      */
+   "TREBLE=50,BASS=50,PITCH=50,GAIN=70,BALANCE=50,VOL=100,INPUT=LINE,OUTPUT=SPEAKER,RESOURCEDLL=MPU401,RCID=9"
+                               /* Device Parms (255 chars)                   */
+END
+
+RCDATA 19
+BEGIN
+   // Prompts for the User
+   "9",                          /* Number of prompts to ask user (2 chars)    */
+                                 /* (max 10 prompts)                           */
+
+   "Base I/O Address",           /* Title of Prompt (max 50 chars)             */
+   "20",                         /* # of valid values (2 chars)                */
+   "Autodetect", "330", "300",   /* Valid values  (20 chars each)              */
+      "332", "334", "336", "200", "210", "220", "230", "240", "250", "260", "270", "310", "320", "340", "350", "360", "370",
+   "", "/P1:330 ", "/P1:300 ",   /* Corresponding config.sys values            */
+      "/P1:332 ", "/P1:334 ", "/P1:336 ", "/P1:200 ", "/P1:210 ", "/P1:220 ", "/P1:230 ", "/P1:240 ", "/P1:250 ", "/P1:260 ", "/P1:270 ", "/P1:310 ", "/P1:320 ", "/P1:340 ", "/P1:350 ", "/P1:360 ", "/P1:370 ",
+   "1",
+
+   "Interrupt level - see help file",
+   "13",
+   "Autodetect", "3", "4", "5", "7", "9", "10", "11", "12", "13", "14", "15", "None",
+   "", "/I1:3 ", "/I1:4 ", "/I1:5 ", "/I1:7 ", "/I1:9 ", "/I1:10 ", "/I1:11 ", "/I1:12 ", "/I1:13 ", "/I1:14 ", "/I1:15 ", "/I1:0 ",
+   "1",
+
+   "Number of devices to autodetect (if applicable)",
+   "2",
+   "Only one", "All of them",
+   "/O:ONLYONE ", "",
+   "1",
+
+   "MMPM/2 TIMER0 resolution",
+   "25",
+   "Never use TIMER0", "Default", "1ms", "2ms", "3ms", "4ms", "5ms", "6ms", "7ms", "8ms", "9ms", "10ms", "11ms", "12ms", "13ms", "14ms", "15ms", "16ms", "17ms", "18ms", "19ms", "20ms", "21ms", "22ms", "23ms",
+   "/O:NOTIMER0 ", "", "/R:1 ", "/R:2 ", "/R:3 ", "/R:4 ", "/R:5 ", "/R:6 ", "/R:7 ", "/R:8 ", "/R:9 ", "/R:10 ", "/R:11 ", "/R:12 ", "/R:13 ", "/R:14 ", "/R:15 ", "/R:16 ", "/R:17 ", "/R:18 ", "/R:19 ", "/R:20 ", "/R:21 ", "/R:22 ", "/R:23 ",
+   "2",
+
+   "I/O and IRQ boot-time checking",
+   "3",
+   "Check I/O and IRQ", "Check only I/O", "Check neither",   /* NOCHECKIO automatically sets NOCHECKIRQ */
+   "", "/O:NOCHECKIRQ ", "/O:NOCHECKIO ",
+   "1",
+
+   "Resource Manager IRQ usage",
+   "4",
+   "Exclusive", "Shared", "Multiplexed", "None",
+   "", "/O:SHAREDIRQ ", "/O:MULTIIRQ ", "/O:NORMIRQ ",
+   "1",
+
+   "Resource Manager I/O usage",
+   "4",
+   "Exclusive", "Shared", "Multiplexed", "None",
+   "", "/O:SHAREDIO ", "/O:MULTIIO ", "/O:NORMIO ",
+   "1",
+
+   "Resource Manager I/O address width",
+   "3",
+   "Default", "10 bits", "16 bits",
+   "", "/O:10BITS ", "/O:16BITS ",
+   "1"
+
+   "Enable DOS hardware sharing support?"
+   "2",
+   "No", "Yes",
+   "", "/O:AUDIOVDD ",
+   "2"
+END
+

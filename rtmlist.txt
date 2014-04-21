@@ -1,0 +1,8 @@
+RTMLIST - The Theta Band RTMIDI status utility
+
+This application is used to debug problems with the MPU-401 device driver.
+You should only use this application when instructed to do so by Theta Band
+Software technicaly support.
+
+This software displays the status of RTMIDI and any nodes (instances) that
+are present.  To use this utility, simply run it from the command-line.

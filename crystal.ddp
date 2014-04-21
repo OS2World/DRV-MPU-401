@@ -1,0 +1,6 @@
+:TITLE
+Crystal Semiconductor MPU-401 driver update
+
+:FILES
+mpu401.sys \mmos2\cwmpu401.sys
+midi.sys \mmos2\midi.sys
